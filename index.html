@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&family=Tangerine:wght@400;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="styles.css?v=20260628o">
+<link rel="stylesheet" href="styles.css?v=20260727c">
 </head>
 <body>
 
@@ -20,12 +20,6 @@
   <img class="splash-image" src="assets/logo/Convitia_logo_variant__Wordmark_%27Convitia%27_202606271709%20(1).jpeg" alt="Convitia">
 </div>
 <script>
-  /* Arriving with a hash already in the URL (e.g. "#work-clasica", from a
-     demo page's "Volver al Sitio web - Convitia" button) means the visitor
-     already passed the splash once — remove it synchronously, before the
-     browser paints, so it never flashes and never blocks the jump straight
-     to the target card/section. Runs inline (not in main.js) so it executes
-     before first paint, not after defer scripts. */
   if(location.hash){
     var __gate = document.getElementById("splash-gate");
     if(__gate) __gate.parentNode.removeChild(__gate);
@@ -79,18 +73,13 @@
   <a href="#como-funciona"><span data-es>Cómo funciona</span><span data-en hidden>How it works</span></a>
   <a href="#preguntas"><span data-es>Preguntas</span><span data-en hidden>FAQ</span></a>
   <a href="contacto/"><span data-es>Contacto</span><span data-en hidden>Contact</span></a>
-  <a class="btn btn-primary" href="https://wa.me/5492944152161?text=Hola!%20Quiero%20crear%20mi%20invitaci%C3%B3n%20digital%20de%20boda%20con%20Convitia" target="_blank" rel="noopener">
+  <a class="btn btn-primary" href="contacto/">
     <span data-es>Empezá tu invitación</span><span data-en hidden>Start your invitation</span>
   </a>
 </div>
 
 <main>
 
-  <!-- ===================== HERO — 2-column: copy left, phone showcase right =====================
-       Merged the old standalone .phone-showcase section into the hero as the
-       right-hand column (reference: text+CTA left / arch+pedestals+phones
-       right). .hero-split is scoped so the shared .hero-giant rules used by
-       contacto/index.html's plain single-column hero stay untouched. -->
   <section class="hero-giant hero-split" id="hero">
     <div class="hero-bg-blob"></div>
     <div class="hero-bg-blob two"></div>
@@ -107,9 +96,6 @@
           <span data-en hidden>With smart RSVP, interactive maps, music, and more. Unlimited revisions. In any language, anywhere in the world.</span>
         </p>
 
-        <!-- PLACEHOLDER badge (Dave's call): Convitia has no Google Business
-             listing yet, so this rating isn't real. Not a live link — swap
-             href/copy for the real review link + rating once it exists. -->
         <span class="reviews-badge reveal" data-es title="Próximamente — todavía no es un dato real">
           <svg class="reviews-badge-g" viewBox="0 0 18 18" aria-hidden="true">
             <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84c-.21 1.13-.85 2.09-1.81 2.73v2.27h2.92c1.71-1.57 2.69-3.88 2.69-6.64z"/>
@@ -123,7 +109,7 @@
         </span>
 
         <div class="hero-cta-row reveal">
-          <a class="btn btn-primary" href="https://wa.me/5492944152161?text=Hola!%20Quiero%20crear%20mi%20invitaci%C3%B3n%20digital%20de%20boda%20con%20Convitia" target="_blank" rel="noopener">
+          <a class="btn btn-primary" href="contacto/">
             <span data-es>Empezá tu invitación</span><span data-en hidden>Start your invitation</span>
           </a>
           <a class="btn btn-ghost" href="disenos/">
@@ -131,11 +117,6 @@
           </a>
         </div>
 
-        <!-- PLACEHOLDER stats (Dave's call, per reference image): the
-             invitation-count and country-count aren't real numbers yet —
-             swap for Convitia's actual figures once available. The
-             delivery time stays real (matches the Stats band further
-             down the page). -->
         <div class="hero-trust reveal">
           <div><b>✓</b> <span data-es>+1000 invitaciones realizadas</span><span data-en hidden>+1000 invitations made</span></div>
           <div><b>🌎</b> <span data-es>+35 países</span><span data-en hidden>+35 countries</span></div>
@@ -144,21 +125,6 @@
       </div>
 
       <div class="hero-right reveal">
-        <!-- Self-contained dark "image accordion" panel — Dave asked to
-             replace the Three.js flying-card scene above with this effect
-             instead, modeled on a 21st.dev interactive-image-accordion
-             component he shared. Scoped to just this column (left column/
-             copy stays untouched). Pure CSS (flexbox + flex-grow transition)
-             + a tiny JS toggle — see initAccGallery() in main.js, no WebGL
-             needed. Each panel's content is the real invitation copy/colors
-             (Quimey & Nacho — the real client site — plus the 3 sample
-             designs): no tool is available to export a literal screenshot,
-             so the real names/dates/colors are painted as CSS text instead
-             of a generic photo. The "Nuestros diseños" tag now sits above
-             the stage (not floating over the panels) so it reads cleanly
-             regardless of which panel's background is underneath. The
-             real video (Quimey & Nacho) that briefly lived in panel c1
-             moved to the "Qué incluye" section — see assets/video/. -->
         <span class="acc-tag">Nuestros diseños</span>
         <div class="acc-stage" aria-hidden="true">
           <div class="acc-row">
@@ -226,7 +192,7 @@
     </div>
   </div>
 
-  <!-- ===================== FEATURED WORK — full-bleed grid ===================== -->
+  <!-- ===================== FEATURED WORK ===================== -->
   <section id="trabajos" class="works-section">
     <div class="container">
       <div class="section-head reveal">
@@ -290,7 +256,7 @@
     </a>
   </section>
 
-  <!-- ===================== INCLUDED — sticky label ===================== -->
+  <!-- ===================== INCLUDED ===================== -->
   <section id="incluye">
     <div class="container sticky-grid">
       <div class="sticky-label reveal">
@@ -328,7 +294,7 @@
     </div>
   </section>
 
-  <!-- ===================== HOW IT WORKS — sticky label left, steps right ===================== -->
+  <!-- ===================== HOW IT WORKS ===================== -->
   <section id="como-funciona">
     <div class="container sticky-grid">
       <div class="sticky-label reveal">
@@ -344,7 +310,7 @@
     </div>
   </section>
 
-  <!-- ===================== DESIGNS — 3D page carousel, drag to spin ===================== -->
+  <!-- ===================== DESIGNS CAROUSEL ===================== -->
   <section id="diferencia">
     <div class="container">
       <div class="section-head center reveal">
@@ -355,14 +321,12 @@
 
       <div class="book-deck reveal">
         <div class="book-track">
-          <!-- Clásica Elegante -->
           <a class="book-card style-clasica" href="designs/clasica-elegante.html" target="_blank" rel="noopener" draggable="false">
             <div class="book-bg" style="background-image:url('assets/portadas/clasica%20elegante.jpeg')"></div>
             <div class="book-ornament">✺</div>
             <h3><span data-es>Clásica Elegante</span><span data-en hidden>Classic Elegant</span></h3>
             <span class="book-tag"><span data-es>Serif &amp; dorado</span><span data-en hidden>Serif &amp; gold</span></span>
           </a>
-          <!-- Moderno Minimalista -->
           <a class="book-card style-moderna" href="designs/moderna-minimal.html" target="_blank" rel="noopener" draggable="false">
             <div class="book-bg" style="background-image:url('assets/portadas/Moderno%20Minimalista.jpeg')"></div>
             <div class="book-ornament">／</div>
@@ -387,7 +351,6 @@
             <h3><span data-es>Moderna Minimal</span><span data-en hidden>Modern Minimal</span></h3>
             <span class="book-tag"><span data-es>Líneas limpias</span><span data-en hidden>Clean lines</span></span>
           </a>
-          <!-- Boho Romántico -->
           <a class="book-card style-boho" href="designs/boho-romantico.html" target="_blank" rel="noopener" draggable="false">
             <div class="book-bg" style="background-image:url('assets/portadas/Boho%20Rom%C3%A1ntico.jpeg')"></div>
             <div class="book-ornament">❀</div>
@@ -418,7 +381,6 @@
             <h3><span data-es>Boho Romántico</span><span data-en hidden>Boho Romantic</span></h3>
             <span class="book-tag"><span data-es>Terracota &amp; salvia</span><span data-en hidden>Terracotta &amp; sage</span></span>
           </a>
-          <!-- Glam / Art Decó -->
           <a class="book-card style-glam" href="designs/glam-art-deco.html" target="_blank" rel="noopener" draggable="false">
             <div class="book-bg" style="background-image:url('assets/portadas/Glam%20-%20Art%20Dec%C3%B3.jpeg')"></div>
             <div class="book-ornament">◈</div>
@@ -447,14 +409,6 @@
       </div>
       <p class="book-hint reveal"><span data-es>Arrastrá para girar y ver los estilos ↔</span><span data-en hidden>Drag to spin through the styles ↔</span></p>
     </div>
-  </section>
-
-  <!-- ===================== CTA BANNER — full-bleed ===================== -->
-  <section class="bleed cta-band reveal">
-    <h2><span data-es>¿List@ para sorprender a tus invitados desde el primer mensaje?</span><span data-en hidden>Ready to surprise your guests from the very first message?</span></h2>
-    <a class="btn btn-ghost" href="https://wa.me/5492944152161?text=Hola!%20Quiero%20crear%20mi%20invitaci%C3%B3n%20digital%20de%20boda%20con%20Convitia" target="_blank" rel="noopener">
-      <span data-es>Escribinos por WhatsApp</span><span data-en hidden>Message us on WhatsApp</span>
-    </a>
   </section>
 
   <!-- ===================== FAQ ===================== -->
@@ -523,7 +477,7 @@
             <li>Sugerencia de música de bienvenida</li>
             <li>Save the Date incluido</li>
           </ul>
-          <a class="plan-excl-link" href="https://wa.me/5492944152161?text=Hola!%20Me%20interesa%20el%20plan%20Exclusivo" target="_blank" rel="noopener">Consultá el precio →</a>
+          <a class="plan-excl-link" href="contacto/">Consultá el precio →</a>
         </div>
         <div class="plan-excl-right">
           <span class="plan-excl-right-tag">EL SERVICIO MOON DE PUNTA A PUNTA</span>
@@ -552,7 +506,6 @@
 
       <!-- Tres planes -->
       <div class="planes-grid reveal">
-        <!-- Esencial -->
         <div class="plan-card">
           <div class="plan-card-tag">ESENCIAL</div>
           <h3 class="plan-card-name">Esencial</h3>
@@ -570,7 +523,6 @@
           </ul>
           <a class="plan-card-btn" href="https://wa.me/5492944152161?text=Hola!%20Me%20interesa%20el%20plan%20Esencial" target="_blank" rel="noopener">CONSULTAR</a>
         </div>
-        <!-- Deluxe -->
         <div class="plan-card">
           <div class="plan-card-tag">DELUXE</div>
           <h3 class="plan-card-name">Deluxe</h3>
@@ -588,7 +540,6 @@
           </ul>
           <a class="plan-card-btn" href="https://wa.me/5492944152161?text=Hola!%20Me%20interesa%20el%20plan%20Deluxe" target="_blank" rel="noopener">CONSULTAR</a>
         </div>
-        <!-- Full -->
         <div class="plan-card plan-card--full">
           <div class="plan-card-tag">FULL</div>
           <h3 class="plan-card-name">Full</h3>
@@ -612,7 +563,7 @@
 <footer>
   <div class="container">
     <div class="footer-brand-row">
-      <a href="#hero" class="brand"><img src="assets/logo/convitia-mark.svg" alt="Convitia" class="brand-mark"><span class="brand-word">Convitia</span></a>
+      <a href="#hero"><img src="assets/logo/logo1.svg?v=20260627g" alt="Convitia" class="footer-logo"></a>
       <p><span data-es>Invitaciones digitales hechas a medida, con cariño.</span><span data-en hidden>Custom digital invitations, made with care.</span></p>
     </div>
     <nav class="footer-links">

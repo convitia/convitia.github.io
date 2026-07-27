@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&family=Tangerine:wght@400;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../styles.css?v=20260727b">
+<link rel="stylesheet" href="../styles.css?v=20260727f">
 
 <style>
 /* ==============================
@@ -246,6 +246,17 @@
   color:var(--terracotta);
 }
 .chip-option input[type="radio"]:checked + label{
+  background:var(--terracotta);
+  border-color:var(--terracotta);
+  color:#fff;
+  transform:translateY(-1px);
+}
+.chip-option input[type="checkbox"]{
+  position:absolute;
+  opacity:0;
+  width:0; height:0;
+}
+.chip-option input[type="checkbox"]:checked + label{
   background:var(--terracotta);
   border-color:var(--terracotta);
   color:#fff;
@@ -596,6 +607,64 @@
                 <label class="form-label" for="mensaje"><span data-es>¿Algo más que quieras contarnos?</span><span data-en hidden>Anything else you'd like to share?</span></label>
               </div>
 
+              <!-- Plan preferido (chips) -->
+              <div class="form-group full" style="margin-bottom:24px;">
+                <span class="form-chips-label"><span data-es>¿Qué plan te gustó más?</span><span data-en hidden>Which plan caught your eye?</span></span>
+                <div class="form-chips" role="radiogroup" aria-label="Plan preferido">
+                  <div class="chip-option">
+                    <input type="radio" name="plan_elegido" id="pl_esencial" value="Esencial">
+                    <label for="pl_esencial"><span data-es>Esencial</span><span data-en hidden>Esencial</span></label>
+                  </div>
+                  <div class="chip-option">
+                    <input type="radio" name="plan_elegido" id="pl_deluxe" value="Deluxe">
+                    <label for="pl_deluxe"><span data-es>Deluxe</span><span data-en hidden>Deluxe</span></label>
+                  </div>
+                  <div class="chip-option">
+                    <input type="radio" name="plan_elegido" id="pl_full" value="Full Personalizado">
+                    <label for="pl_full"><span data-es>Full Personalizado</span><span data-en hidden>Full Personalizado</span></label>
+                  </div>
+                  <div class="chip-option">
+                    <input type="radio" name="plan_elegido" id="pl_nodecidido" value="Todavía no lo sé">
+                    <label for="pl_nodecidido"><span data-es>Todavía no lo sé</span><span data-en hidden>Not sure yet</span></label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Complementos deseados (checkboxes — multiopción) -->
+              <div class="form-group full" style="margin-bottom:24px;">
+                <span class="form-chips-label"><span data-es>¿Qué complemento desea sumar?</span><span data-en hidden>Which add-on would you like?</span></span>
+                <div class="form-chips" role="group" aria-label="Complementos deseados">
+                  <div class="chip-option">
+                    <input type="checkbox" name="complemento" id="comp_urgencia" value="Urgencia <48 hs">
+                    <label for="comp_urgencia"><span data-es>⚡ Urgencia &lt;48 hs</span><span data-en hidden>⚡ Rush &lt;48 h</span></label>
+                  </div>
+                  <div class="chip-option">
+                    <input type="checkbox" name="complemento" id="comp_std" value="Save the Date">
+                    <label for="comp_std"><span data-es>📅 Save the Date</span><span data-en hidden>📅 Save the Date</span></label>
+                  </div>
+                  <div class="chip-option">
+                    <input type="checkbox" name="complemento" id="comp_gracias" value="Versión Gracias post-evento">
+                    <label for="comp_gracias"><span data-es>💌 Versión Gracias post-evento</span><span data-en hidden>💌 Thank you post-event</span></label>
+                  </div>
+                  <div class="chip-option">
+                    <input type="checkbox" name="complemento" id="comp_seccion" value="Sección adicional">
+                    <label for="comp_seccion"><span data-es>➕ Sección adicional</span><span data-en hidden>➕ Additional section</span></label>
+                  </div>
+                  <div class="chip-option">
+                    <input type="checkbox" name="complemento" id="comp_idioma" value="Idioma adicional">
+                    <label for="comp_idioma"><span data-es>🌐 Idioma adicional</span><span data-en hidden>🌐 Additional language</span></label>
+                  </div>
+                  <div class="chip-option">
+                    <input type="checkbox" name="complemento" id="comp_video" value="Video reveal para redes">
+                    <label for="comp_video"><span data-es>🎬 Video reveal para redes</span><span data-en hidden>🎬 Social media reveal video</span></label>
+                  </div>
+                  <div class="chip-option">
+                    <input type="checkbox" name="complemento" id="comp_fotovideo" value="Producción de fotos / video">
+                    <label for="comp_fotovideo"><span data-es>📸 Producción de fotos / video</span><span data-en hidden>📸 Photo &amp; video production</span></label>
+                  </div>
+                </div>
+              </div>
+
               <!-- Cómo nos conociste (chips) — siempre lo último -->
               <div class="form-group full" style="margin-bottom:24px;">
                 <span class="form-chips-label"><span data-es>¿Cómo nos conociste?</span><span data-en hidden>How did you find us?</span></span>
@@ -700,6 +769,8 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   const lugarTipo     = getRadio('lugar_tipo');
   const diseno        = getRadio('diseno');
   const avSonido      = getRadio('av_sonido');
+  const planElegido   = getRadio('plan_elegido');
+  const complementos  = Array.from(document.querySelectorAll('input[name="complemento"]:checked')).map(el=>el.value).join(', ');
   const comoConociste = getRadio('como_conociste');
 
   // Build WhatsApp pre-filled message
@@ -712,6 +783,8 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   if (invitados)    lines.push(`👥 Invitados: ${invitados}`);
   if (diseno)       lines.push(`🎨 Estilo elegido: ${diseno}`);
   if (avSonido)     lines.push(`🎵 DJ / Sonido / Iluminación: ${avSonido}`);
+  if (planElegido)  lines.push(`💎 Plan elegido: ${planElegido}`);
+  if (complementos) lines.push(`➕ Complementos: ${complementos}`);
   if (email)        lines.push(`✉ Email: ${email}`);
   if (telefono)     lines.push(`📞 Teléfono: ${telefono}`);
   if (comoConociste) lines.push(`🔎 Nos encontraron por: ${comoConociste}`);

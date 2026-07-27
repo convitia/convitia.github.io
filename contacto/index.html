@@ -178,6 +178,18 @@
   color:var(--terracotta);
 }
 
+/* Date input — label siempre arriba (el browser muestra DD/MM/AAAA) */
+.form-group input[type="date"]{
+  color-scheme:light;
+  cursor:pointer;
+}
+.form-group input[type="date"] ~ .form-label{
+  top:2px;
+  font-size:10px;
+  letter-spacing:.12em;
+  color:var(--terracotta-d);
+}
+
 /* Focus line underline animation */
 .form-group::after{
   content:"";
@@ -451,7 +463,7 @@
         <!-- Formulario -->
         <div class="contact-form-card reveal" style="transition-delay:.12s">
           <p class="form-title"><span data-es>Contanos sobre tu boda</span><span data-en hidden>Tell us about your wedding</span></p>
-          <p class="form-subtitle"><span data-es>Todos los campos son opcionales — completá lo que tengas.</span><span data-en hidden>All fields are optional — fill in what you have.</span></p>
+          <p class="form-subtitle"><span data-es>Todos los campos son opcionales.</span><span data-en hidden>All fields are optional.</span></p>
 
           <form id="contactForm" novalidate>
             <div class="form-grid">
@@ -464,7 +476,7 @@
 
               <!-- Fecha -->
               <div class="form-group">
-                <input type="text" id="fecha" name="fecha" placeholder=" ">
+                <input type="date" id="fecha" name="fecha">
                 <label class="form-label" for="fecha"><span data-es>Fecha del evento</span><span data-en hidden>Event date</span></label>
               </div>
 
@@ -517,7 +529,74 @@
                 </div>
               </div>
 
-              <!-- Cómo nos conociste (chips) -->
+              <!-- Dónde se realiza (chips) -->
+              <div class="form-group full" style="margin-bottom:24px;">
+                <span class="form-chips-label"><span data-es>¿Dónde se realiza el evento?</span><span data-en hidden>Where is the event taking place?</span></span>
+                <div class="form-chips" role="radiogroup" aria-label="Dónde se realiza el evento">
+                  <div class="chip-option">
+                    <input type="radio" name="lugar_tipo" id="lt_salon" value="Salón">
+                    <label for="lt_salon"><span data-es>🏛 Salón</span><span data-en hidden>🏛 Indoor venue</span></label>
+                  </div>
+                  <div class="chip-option">
+                    <input type="radio" name="lugar_tipo" id="lt_aire" value="Aire libre">
+                    <label for="lt_aire"><span data-es>🌿 Aire libre</span><span data-en hidden>🌿 Outdoor</span></label>
+                  </div>
+                  <div class="chip-option">
+                    <input type="radio" name="lugar_tipo" id="lt_ambos" value="Salón + Aire libre">
+                    <label for="lt_ambos"><span data-es>✨ Ambos</span><span data-en hidden>✨ Both</span></label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Diseño / temática (chips) -->
+              <div class="form-group full" style="margin-bottom:24px;">
+                <span class="form-chips-label"><span data-es>¿Qué diseño o temática les gustó?</span><span data-en hidden>Which design or theme caught your eye?</span></span>
+                <div class="form-chips" role="radiogroup" aria-label="Diseño o temática">
+                  <div class="chip-option">
+                    <input type="radio" name="diseno" id="ds_clasica" value="Clásica Elegante">
+                    <label for="ds_clasica"><span data-es>🤍 Clásica Elegante</span><span data-en hidden>🤍 Classic Elegant</span></label>
+                  </div>
+                  <div class="chip-option">
+                    <input type="radio" name="diseno" id="ds_moderno" value="Moderno Minimalista">
+                    <label for="ds_moderno"><span data-es>◻ Moderno Minimalista</span><span data-en hidden>◻ Modern Minimalist</span></label>
+                  </div>
+                  <div class="chip-option">
+                    <input type="radio" name="diseno" id="ds_boho" value="Boho Romántico">
+                    <label for="ds_boho"><span data-es>🌸 Boho Romántico</span><span data-en hidden>🌸 Boho Romantic</span></label>
+                  </div>
+                  <div class="chip-option">
+                    <input type="radio" name="diseno" id="ds_glam" value="Glam / Art Decó">
+                    <label for="ds_glam"><span data-es>✦ Glam / Art Decó</span><span data-en hidden>✦ Glam / Art Deco</span></label>
+                  </div>
+                  <div class="chip-option">
+                    <input type="radio" name="diseno" id="ds_propio" value="Personalizado">
+                    <label for="ds_propio"><span data-es>🎨 Personalizado</span><span data-en hidden>🎨 Custom</span></label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- DJ / Sonido / Iluminación (chips) -->
+              <div class="form-group full" style="margin-bottom:24px;">
+                <span class="form-chips-label"><span data-es>¿Tienen DJ, sonido, iluminación y pantallas?</span><span data-en hidden>Do you have DJ, sound, lighting &amp; screens?</span></span>
+                <div class="form-chips" role="radiogroup" aria-label="DJ sonido iluminación">
+                  <div class="chip-option">
+                    <input type="radio" name="av_sonido" id="av_si" value="Sí, tenemos resuelto">
+                    <label for="av_si"><span data-es>✅ Sí, tenemos resuelto</span><span data-en hidden>✅ Yes, all sorted</span></label>
+                  </div>
+                  <div class="chip-option">
+                    <input type="radio" name="av_sonido" id="av_no" value="No, ayúdanos">
+                    <label for="av_no"><span data-es>🙋 No, ¡ayúdanos!</span><span data-en hidden>🙋 No, help us!</span></label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mensaje libre -->
+              <div class="form-group full">
+                <textarea id="mensaje" name="mensaje" placeholder=" "></textarea>
+                <label class="form-label" for="mensaje"><span data-es>¿Algo más que quieras contarnos?</span><span data-en hidden>Anything else you'd like to share?</span></label>
+              </div>
+
+              <!-- Cómo nos conociste (chips) — siempre lo último -->
               <div class="form-group full" style="margin-bottom:24px;">
                 <span class="form-chips-label"><span data-es>¿Cómo nos conociste?</span><span data-en hidden>How did you find us?</span></span>
                 <div class="form-chips" role="radiogroup" aria-label="Cómo nos conociste">
@@ -538,24 +617,6 @@
                     <label for="ck_otro"><span data-es>💬 Otro</span><span data-en hidden>💬 Other</span></label>
                   </div>
                 </div>
-              </div>
-
-              <!-- Salon / jardín -->
-              <div class="form-group">
-                <input type="text" id="salon" name="salon" placeholder=" ">
-                <label class="form-label" for="salon"><span data-es>Salón, jardín o rancho</span><span data-en hidden>Venue type</span></label>
-              </div>
-
-              <!-- Temática -->
-              <div class="form-group">
-                <input type="text" id="tematica" name="tematica" placeholder=" ">
-                <label class="form-label" for="tematica"><span data-es>Temática o estilo en mente</span><span data-en hidden>Theme or style in mind</span></label>
-              </div>
-
-              <!-- Mensaje libre -->
-              <div class="form-group full">
-                <textarea id="mensaje" name="mensaje" placeholder=" "></textarea>
-                <label class="form-label" for="mensaje"><span data-es>¿Algo más que quieras contarnos?</span><span data-en hidden>Anything else you'd like to share?</span></label>
               </div>
 
               <!-- Submit -->
@@ -625,16 +686,21 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   };
 
   const nombre    = get('nombre');
-  const fecha     = get('fecha');
   const email     = get('email');
   const telefono  = get('telefono');
   const lugar     = get('lugar');
   const invitados = get('invitados');
-  const salon     = get('salon');
-  const tematica  = get('tematica');
   const mensaje   = get('mensaje');
-  const tipoEvento      = getRadio('tipo_evento');
-  const comoConociste   = getRadio('como_conociste');
+  // Fecha: formatear de YYYY-MM-DD a DD/MM/YYYY si hay valor
+  const fechaRaw  = get('fecha');
+  const fecha     = fechaRaw
+    ? fechaRaw.split('-').reverse().join('/')
+    : '';
+  const tipoEvento    = getRadio('tipo_evento');
+  const lugarTipo     = getRadio('lugar_tipo');
+  const diseno        = getRadio('diseno');
+  const avSonido      = getRadio('av_sonido');
+  const comoConociste = getRadio('como_conociste');
 
   // Build WhatsApp pre-filled message
   const lines = ['Hola! Les escribo desde el formulario de su sitio web. Aquí mis datos:'];
@@ -642,9 +708,10 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   if (tipoEvento)   lines.push(`🎉 Evento: ${tipoEvento}`);
   if (fecha)        lines.push(`📅 Fecha: ${fecha}`);
   if (lugar)        lines.push(`📍 Lugar: ${lugar}`);
-  if (salon)        lines.push(`🏛 Espacio: ${salon}`);
+  if (lugarTipo)    lines.push(`🏛 Espacio: ${lugarTipo}`);
   if (invitados)    lines.push(`👥 Invitados: ${invitados}`);
-  if (tematica)     lines.push(`🎨 Temática: ${tematica}`);
+  if (diseno)       lines.push(`🎨 Estilo elegido: ${diseno}`);
+  if (avSonido)     lines.push(`🎵 DJ / Sonido / Iluminación: ${avSonido}`);
   if (email)        lines.push(`✉ Email: ${email}`);
   if (telefono)     lines.push(`📞 Teléfono: ${telefono}`);
   if (comoConociste) lines.push(`🔎 Nos encontraron por: ${comoConociste}`);

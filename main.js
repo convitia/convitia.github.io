@@ -255,10 +255,10 @@
     /* Card-spawn trail: built unconditionally (not just on fine pointers)
        so touch devices get the same visual via finger-drag, see below. */
     var designs = [
-      { style:"real",    seal:"C", name:"Juan &amp; Naty",    venue:"Bariloche, Arg.",                  tag:"Caso real" },
-      { style:"clasica", seal:"C", name:"Valentina &amp; Bruno", venue:"Est. Las Magnolias, Córdoba",       tag:"Clásica Elegante" },
-      { style:"moderna", seal:"C", name:"Julia &amp; Martín",    venue:"Espacio Darwin, Bs. As.",           tag:"Moderna Minimal" },
-      { style:"boho",    seal:"C", name:"Coti &amp; Iván",       venue:"Finca Las Acacias, Córdoba",        tag:"Boho Romántico" }
+      { img:"assets/portadas/boho%20romantico/Wedding_invitation_digital_cover_2K_202607262352.jpeg", tag:"Boho Romántico" },
+      { img:"assets/portadas/clasica%20elegante.jpeg",                                                tag:"Clásica Elegante" },
+      { img:"assets/portadas/moderno%20minimalista/Wedding_invitation_digital_cover_2K_202607262350.jpeg", tag:"Moderna Minimal" },
+      { img:"assets/portadas/glam%20-%20art%20deco/Wedding_invitation_digital_cover_2K_202607270006.jpeg", tag:"Glam · Art Decó" }
     ];
     var idx = 0, travel = 0, lastX = null, lastY = null;
 
@@ -266,13 +266,11 @@
       var d = designs[idx];
       idx = (idx + 1) % designs.length;
       var card = document.createElement("div");
-      card.className = "cg-card style-" + d.style;
+      card.className = "cg-card";
       card.style.left = x + "px";
       card.style.top = y + "px";
       card.innerHTML =
-        '<div class="seal">' + d.seal + '</div>' +
-        '<h4>' + d.name + '</h4>' +
-        '<div class="cg-venue">' + d.venue + '</div>' +
+        '<img src="' + d.img + '" alt="">' +
         '<span class="cg-tag">' + d.tag + '</span>';
       gate.appendChild(card);
       requestAnimationFrame(function(){ card.classList.add("cg-in"); });
@@ -346,10 +344,10 @@
     if(!hero) return;
 
     var designs = [
-      { style:"real",    seal:"C", name:"Juan &amp; Naty",    venue:"Bariloche, Arg.",                  tag:"Caso real" },
-      { style:"clasica", seal:"C", name:"Valentina &amp; Bruno", venue:"Est. Las Magnolias, Córdoba",       tag:"Clásica Elegante" },
-      { style:"moderna", seal:"C", name:"Julia &amp; Martín",    venue:"Espacio Darwin, Bs. As.",           tag:"Moderna Minimal" },
-      { style:"boho",    seal:"C", name:"Coti &amp; Iván",       venue:"Finca Las Acacias, Córdoba",        tag:"Boho Romántico" }
+      { img:"assets/portadas/boho%20romantico/Wedding_invitation_digital_cover_2K_202607262352.jpeg", tag:"Boho Romántico" },
+      { img:"assets/portadas/clasica%20elegante.jpeg",                                                tag:"Clásica Elegante" },
+      { img:"assets/portadas/moderno%20minimalista/Wedding_invitation_digital_cover_2K_202607262350.jpeg", tag:"Moderna Minimal" },
+      { img:"assets/portadas/glam%20-%20art%20deco/Wedding_invitation_digital_cover_2K_202607270006.jpeg", tag:"Glam · Art Decó" }
     ];
 
     var idx = 0, travel = 0, lastX = null, lastY = null;
@@ -359,13 +357,11 @@
       idx = (idx + 1) % designs.length;
 
       var card = document.createElement("div");
-      card.className = "cg-card style-" + d.style;
+      card.className = "cg-card";
       card.style.left = x + "px";
       card.style.top = y + "px";
       card.innerHTML =
-        '<div class="seal">' + d.seal + '</div>' +
-        '<h4>' + d.name + '</h4>' +
-        '<div class="cg-venue">' + d.venue + '</div>' +
+        '<img src="' + d.img + '" alt="">' +
         '<span class="cg-tag">' + d.tag + '</span>';
       hero.appendChild(card);
 

@@ -3,405 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contacto — Convitia</title>
-<meta name="description" content="Contanos sobre tu boda y te respondemos el mismo día. Formulario de contacto de Convitia — invitaciones digitales a medida.">
+<title>Convitia — Invitaciones digitales de boda</title>
+<meta name="description" content="Invitaciones digitales de boda hechas a medida. Diseñador real, cambios ilimitados, un solo link para todos tus invitados. / Custom digital wedding invitations — real designer, unlimited revisions, one link for all your guests.">
 <meta name="theme-color" content="#B5654A">
-<link rel="icon" href="../assets/logo/convitia-mark.svg" type="image/svg+xml">
+<link rel="icon" href="assets/logo/convitia-mark.svg" type="image/svg+xml">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&family=Tangerine:wght@400;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../styles.css?v=20260727f">
-
-<style>
-/* ==============================
-   CONTACTO — FORMULARIO
-============================== */
-.contact-wrap{
-  padding:60px 0 120px;
-}
-.contact-grid{
-  display:grid;
-  grid-template-columns:1fr 1.6fr;
-  gap:80px;
-  align-items:start;
-}
-
-/* — Side info panel — */
-.contact-info{
-  position:sticky;
-  top:120px;
-}
-.contact-info-title{
-  font-family:var(--font-display);
-  font-size:clamp(36px,3.5vw,52px);
-  font-weight:500;
-  line-height:1.1;
-  margin:18px 0 20px;
-}
-.contact-info-title em{
-  font-style:italic;
-  color:var(--terracotta-d);
-}
-.contact-info-body{
-  font-size:15px;
-  color:var(--ink-soft);
-  line-height:1.75;
-  margin-bottom:36px;
-  max-width:320px;
-}
-.contact-info-links{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-.contact-info-link{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-size:13.5px;
-  color:var(--ink-soft);
-  text-decoration:none;
-  transition:color .2s;
-}
-.contact-info-link:hover{ color:var(--terracotta); }
-.contact-info-link-icon{
-  width:36px; height:36px; border-radius:50%;
-  border:1px solid var(--line);
-  display:flex; align-items:center; justify-content:center;
-  font-size:14px; flex-shrink:0;
-  background:var(--paper);
-  transition:border-color .2s, background .2s;
-}
-.contact-info-link:hover .contact-info-link-icon{
-  border-color:var(--terracotta);
-  background:rgba(181,101,74,.06);
-}
-.contact-ornament{
-  font-size:80px;
-  color:var(--gold-soft);
-  font-family:var(--font-display);
-  line-height:1;
-  margin-top:40px;
-  user-select:none;
-}
-
-/* — Form card — */
-.contact-form-card{
-  background:var(--paper);
-  border:1px solid var(--line);
-  border-radius:24px;
-  padding:52px 48px;
-  box-shadow:0 24px 60px -28px rgba(43,36,32,.14);
-}
-.form-title{
-  font-family:var(--font-display);
-  font-size:26px;
-  font-weight:500;
-  margin-bottom:6px;
-}
-.form-subtitle{
-  font-size:13.5px;
-  color:var(--ink-soft);
-  margin-bottom:42px;
-}
-
-/* Grid de campos */
-.form-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:0 32px;
-}
-.form-group{
-  position:relative;
-  margin-bottom:34px;
-}
-.form-group.full{
-  grid-column:1/-1;
-}
-
-/* Floating label inputs */
-.form-group input,
-.form-group textarea,
-.form-group select{
-  width:100%;
-  background:transparent;
-  border:none;
-  border-bottom:1.5px solid var(--line);
-  padding:22px 0 10px;
-  font-family:var(--font-body);
-  font-size:15px;
-  color:var(--ink);
-  outline:none;
-  transition:border-color .3s;
-  border-radius:0;
-  appearance:none;
-  -webkit-appearance:none;
-}
-.form-group textarea{
-  resize:none;
-  height:90px;
-  line-height:1.6;
-}
-.form-group input:focus,
-.form-group textarea:focus{
-  border-bottom-color:var(--terracotta);
-}
-.form-group input::placeholder,
-.form-group textarea::placeholder{
-  opacity:0;
-}
-.form-label{
-  position:absolute;
-  top:20px; left:0;
-  font-family:var(--font-body);
-  font-size:13px;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  color:var(--ink-soft);
-  font-weight:500;
-  pointer-events:none;
-  transition:top .25s, font-size .25s, color .25s, letter-spacing .25s;
-}
-/* Float label up on focus or when filled */
-.form-group input:focus ~ .form-label,
-.form-group input:not(:placeholder-shown) ~ .form-label,
-.form-group textarea:focus ~ .form-label,
-.form-group textarea:not(:placeholder-shown) ~ .form-label{
-  top:2px;
-  font-size:10px;
-  letter-spacing:.12em;
-  color:var(--terracotta-d);
-}
-.form-group input:focus ~ .form-label{
-  color:var(--terracotta);
-}
-
-/* Date input — label siempre arriba (el browser muestra DD/MM/AAAA) */
-.form-group input[type="date"]{
-  color-scheme:light;
-  cursor:pointer;
-}
-.form-group input[type="date"] ~ .form-label{
-  top:2px;
-  font-size:10px;
-  letter-spacing:.12em;
-  color:var(--terracotta-d);
-}
-
-/* Focus line underline animation */
-.form-group::after{
-  content:"";
-  position:absolute;
-  bottom:0; left:0;
-  width:0; height:1.5px;
-  background:var(--terracotta);
-  transition:width .35s var(--ease);
-}
-.form-group:focus-within::after{
-  width:100%;
-}
-
-/* — Chip selectors (radio groups) — */
-.form-chips-label{
-  font-family:var(--font-body);
-  font-size:10px;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--terracotta-d);
-  font-weight:500;
-  display:block;
-  margin-bottom:14px;
-  padding-top:4px;
-}
-.form-chips{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-.chip-option{
-  position:relative;
-}
-.chip-option input[type="radio"]{
-  position:absolute;
-  opacity:0;
-  width:0; height:0;
-}
-.chip-option label{
-  display:inline-block;
-  padding:8px 18px;
-  border:1.5px solid var(--line);
-  border-radius:999px;
-  font-family:var(--font-body);
-  font-size:13px;
-  color:var(--ink-soft);
-  cursor:pointer;
-  transition:border-color .2s, background .2s, color .2s, transform .2s;
-  user-select:none;
-  white-space:nowrap;
-}
-.chip-option label:hover{
-  border-color:var(--terracotta);
-  color:var(--terracotta);
-}
-.chip-option input[type="radio"]:checked + label{
-  background:var(--terracotta);
-  border-color:var(--terracotta);
-  color:#fff;
-  transform:translateY(-1px);
-}
-.chip-option input[type="checkbox"]{
-  position:absolute;
-  opacity:0;
-  width:0; height:0;
-}
-.chip-option input[type="checkbox"]:checked + label{
-  background:var(--terracotta);
-  border-color:var(--terracotta);
-  color:#fff;
-  transform:translateY(-1px);
-}
-
-/* — Divider — */
-.form-divider{
-  grid-column:1/-1;
-  height:1px;
-  background:var(--line);
-  margin:6px 0 28px;
-}
-
-/* — Submit — */
-.form-submit-row{
-  grid-column:1/-1;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  margin-top:8px;
-  flex-wrap:wrap;
-}
-.form-submit-note{
-  font-size:12.5px;
-  color:var(--ink-soft);
-  line-height:1.5;
-  max-width:260px;
-}
-.form-submit-note strong{
-  color:var(--ink);
-}
-.btn-submit{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:16px 36px;
-  border-radius:999px;
-  font-size:15px;
-  font-weight:500;
-  font-family:var(--font-body);
-  background:var(--terracotta);
-  color:#fff;
-  border:none;
-  cursor:pointer;
-  box-shadow:0 10px 24px -8px rgba(181,101,74,.5);
-  transition:transform .3s var(--ease), box-shadow .3s var(--ease), background .25s;
-  white-space:nowrap;
-}
-.btn-submit:hover{
-  transform:translateY(-2px);
-  box-shadow:0 16px 30px -8px rgba(181,101,74,.6);
-  background:var(--terracotta-d);
-}
-.btn-submit svg{
-  width:17px; height:17px;
-}
-
-/* — Success state — */
-.form-success{
-  display:none;
-  text-align:center;
-  padding:60px 20px;
-}
-.form-success.is-visible{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:16px;
-}
-.form-success-icon{
-  font-size:52px;
-  line-height:1;
-}
-.form-success h3{
-  font-family:var(--font-display);
-  font-size:28px;
-  font-weight:500;
-}
-.form-success p{
-  font-size:14.5px;
-  color:var(--ink-soft);
-  max-width:320px;
-  line-height:1.65;
-}
-
-/* Responsive */
-@media(max-width:900px){
-  .contact-grid{
-    grid-template-columns:1fr;
-    gap:48px;
-  }
-  .contact-info{
-    position:static;
-  }
-  .contact-info-title{
-    font-size:clamp(30px,6vw,42px);
-  }
-  .contact-ornament{ display:none; }
-}
-@media(max-width:680px){
-  .contact-form-card{
-    padding:36px 24px;
-    border-radius:16px;
-  }
-  .form-grid{
-    grid-template-columns:1fr;
-  }
-  .form-group.full{
-    grid-column:1;
-  }
-  .form-submit-row{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-  .btn-submit{
-    width:100%;
-    justify-content:center;
-  }
-}
-</style>
+<link rel="stylesheet" href="styles.css?v=20260727f">
 </head>
 <body>
 
+<div id="splash-gate" class="splash-gate" aria-hidden="true">
+  <img class="splash-image" src="assets/logo/Convitia_logo_variant__Wordmark_%27Convitia%27_202606271709%20(1).jpeg" alt="Convitia">
+</div>
+<script>
+  /* Arriving with a hash already in the URL (e.g. "#work-clasica", from a
+     demo page's "Volver al Sitio web - Convitia" button) means the visitor
+     already passed the splash once — remove it synchronously, before the
+     browser paints, so it never flashes and never blocks the jump straight
+     to the target card/section. Runs inline (not in main.js) so it executes
+     before first paint, not after defer scripts. */
+  if(location.hash){
+    var __gate = document.getElementById("splash-gate");
+    if(__gate) __gate.parentNode.removeChild(__gate);
+  }
+</script>
+
 <header class="site-header">
   <div class="container">
-    <a href="../index.html" class="brand">
-      <img src="../assets/logo/logo1.svg?v=20260627g" alt="Convitia" class="brand-logo">
+    <a href="#hero" class="brand">
+      <img src="assets/logo/logo1.svg?v=20260627g" alt="Convitia" class="brand-logo">
     </a>
 
     <nav class="main-nav">
-      <a href="../index.html"><span data-es>Inicio</span><span data-en hidden>Home</span></a>
-      <a href="../disenos/"><span data-es>Diseños</span><span data-en hidden>Designs</span></a>
-      <a href="../index.html#como-funciona"><span data-es>Cómo funciona</span><span data-en hidden>How it works</span></a>
-      <a href="./" class="active"><span data-es>Contacto</span><span data-en hidden>Contact</span></a>
+      <a href="#hero" class="active"><span data-es>Inicio</span><span data-en hidden>Home</span></a>
+      <a href="disenos/"><span data-es>Diseños</span><span data-en hidden>Designs</span></a>
+      <a href="#como-funciona"><span data-es>Cómo funciona</span><span data-en hidden>How it works</span></a>
+      <a href="contacto/"><span data-es>Contacto</span><span data-en hidden>Contact</span></a>
     </nav>
 
     <div class="header-actions">
+      <div class="audio-control">
+        <button type="button" class="audio-toggle" aria-label="Silenciar música" aria-pressed="true">
+          <svg class="icon-vol" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 010 7M19 6a8 8 0 010 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/></svg>
+          <svg class="icon-mute" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3z" fill="currentColor"/><path d="M16 8l5 8M21 8l-5 8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <input type="range" class="audio-volume" min="0" max="1" step="0.01" value="0.5" aria-label="Volumen de la música">
+        <audio class="site-audio" src="assets/audio/amor-loco.mp3?v=20260628" loop preload="auto"></audio>
+      </div>
       <div class="lang-toggle">
         <button data-lang-btn="es" class="active">ES</button>
         <button data-lang-btn="en">EN</button>
       </div>
-      <a class="btn btn-primary btn-sm" href="https://wa.me/5492944152161?text=Hola!%20Quiero%20crear%20mi%20invitaci%C3%B3n%20digital%20de%20boda%20con%20Convitia" target="_blank" rel="noopener">
-        <span data-es>WhatsApp</span><span data-en hidden>WhatsApp</span>
+      <a class="btn btn-primary btn-sm" href="contacto/">
+        <span data-es>Hablemos</span><span data-en hidden>Let's talk</span>
       </a>
       <button class="nav-toggle" aria-label="Menú">
         <span></span>
@@ -415,311 +73,549 @@
     <button data-lang-btn="es" class="active">ES</button>
     <button data-lang-btn="en">EN</button>
   </div>
-  <a href="../index.html"><span data-es>Inicio</span><span data-en hidden>Home</span></a>
-  <a href="../disenos/"><span data-es>Diseños</span><span data-en hidden>Designs</span></a>
-  <a href="../index.html#incluye"><span data-es>Qué incluye</span><span data-en hidden>What's included</span></a>
-  <a href="../index.html#como-funciona"><span data-es>Cómo funciona</span><span data-en hidden>How it works</span></a>
-  <a href="../index.html#preguntas"><span data-es>Preguntas</span><span data-en hidden>FAQ</span></a>
-  <a href="./"><span data-es>Contacto</span><span data-en hidden>Contact</span></a>
-  <a class="btn btn-primary" href="./">
+  <a href="#hero"><span data-es>Inicio</span><span data-en hidden>Home</span></a>
+  <a href="disenos/"><span data-es>Diseños</span><span data-en hidden>Designs</span></a>
+  <a href="#incluye"><span data-es>Qué incluye</span><span data-en hidden>What's included</span></a>
+  <a href="#como-funciona"><span data-es>Cómo funciona</span><span data-en hidden>How it works</span></a>
+  <a href="#preguntas"><span data-es>Preguntas</span><span data-en hidden>FAQ</span></a>
+  <a href="contacto/"><span data-es>Contacto</span><span data-en hidden>Contact</span></a>
+  <a class="btn btn-primary" href="contacto/">
     <span data-es>Empezá tu invitación</span><span data-en hidden>Start your invitation</span>
   </a>
 </div>
 
 <main>
 
-  <section class="page-intro" style="padding-bottom:0;">
-    <div class="container">
-      <span class="eyebrow reveal"><span data-es>Contacto</span><span data-en hidden>Contact</span></span>
-      <h1 class="reveal" style="font-size:clamp(42px,6vw,72px);margin:14px 0 16px;">
-        <span data-es>Hablemos de <em style="font-style:italic;color:var(--terracotta-d);">tu boda</em></span>
-        <span data-en hidden>Let's talk about <em style="font-style:italic;color:var(--terracotta-d);">your wedding</em></span>
-      </h1>
+  <!-- ===================== HERO — 2-column: copy left, phone showcase right =====================
+       Merged the old standalone .phone-showcase section into the hero as the
+       right-hand column (reference: text+CTA left / arch+pedestals+phones
+       right). .hero-split is scoped so the shared .hero-giant rules used by
+       contacto/index.html's plain single-column hero stay untouched. -->
+  <section class="hero-giant hero-split" id="hero">
+    <div class="hero-bg-blob"></div>
+    <div class="hero-bg-blob two"></div>
+    <div class="container hero-grid">
+
+      <div class="hero-left">
+        <span class="eyebrow reveal"><span data-es>Invitaciones digitales de boda</span><span data-en hidden>Wedding digital invitations</span></span>
+        <h1 class="giant-word reveal">
+          <span class="hl-accent"><span data-es>Invitaciones digitales</span><span data-en hidden>Digital invitations</span></span><br>
+          <span data-es>pensadas para atesorar</span><span data-en hidden>made to cherish</span><span class="type-cursor" aria-hidden="true"></span>
+        </h1>
+        <p class="lede reveal">
+          <span data-es>Con RSVP inteligente, mapas interactivos, música y más. Cambios ilimitados. En el idioma que necesites, en cualquier parte del mundo.</span>
+          <span data-en hidden>With smart RSVP, interactive maps, music, and more. Unlimited revisions. In any language, anywhere in the world.</span>
+        </p>
+
+        <!-- PLACEHOLDER badge (Dave's call): Convitia has no Google Business
+             listing yet, so this rating isn't real. Not a live link — swap
+             href/copy for the real review link + rating once it exists. -->
+        <span class="reviews-badge reveal" data-es title="Próximamente — todavía no es un dato real">
+          <svg class="reviews-badge-g" viewBox="0 0 18 18" aria-hidden="true">
+            <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84c-.21 1.13-.85 2.09-1.81 2.73v2.27h2.92c1.71-1.57 2.69-3.88 2.69-6.64z"/>
+            <path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.27c-.81.54-1.84.87-3.04.87-2.34 0-4.32-1.58-5.03-3.71H.96v2.33C2.44 15.98 5.48 18 9 18z"/>
+            <path fill="#FBBC05" d="M3.97 10.71A5.4 5.4 0 0 1 3.68 9c0-.6.1-1.18.29-1.71V4.96H.96A8.99 8.99 0 0 0 0 9c0 1.45.35 2.83.96 4.04l3.01-2.33z"/>
+            <path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.35l2.58-2.58C13.46.89 11.43 0 9 0 5.48 0 2.44 2.02.96 4.96l3.01 2.33C4.68 5.16 6.66 3.58 9 3.58z"/>
+          </svg>
+          <b>5.0</b>
+          <span class="reviews-stars" aria-hidden="true">★★★★★</span>
+          <span class="reviews-label"><span data-es>Reseñas de Google</span><span data-en hidden>Google Reviews</span> →</span>
+        </span>
+
+        <div class="hero-cta-row reveal">
+          <a class="btn btn-primary" href="contacto/">
+            <span data-es>Empezá tu invitación</span><span data-en hidden>Start your invitation</span>
+          </a>
+          <a class="btn btn-ghost" href="disenos/">
+            <span data-es>Ver diseños</span><span data-en hidden>See designs</span>
+          </a>
+        </div>
+
+        <!-- PLACEHOLDER stats (Dave's call, per reference image): the
+             invitation-count and country-count aren't real numbers yet —
+             swap for Convitia's actual figures once available. The
+             delivery time stays real (matches the Stats band further
+             down the page). -->
+        <div class="hero-trust reveal">
+          <div><b>✓</b> <span data-es>+1000 invitaciones realizadas</span><span data-en hidden>+1000 invitations made</span></div>
+          <div><b>🌎</b> <span data-es>+35 países</span><span data-en hidden>+35 countries</span></div>
+          <div><b>⏳</b> <span data-es>Entrega express 48-72h</span><span data-en hidden>Express delivery 48-72h</span></div>
+        </div>
+      </div>
+
+      <div class="hero-right reveal">
+        <!-- Self-contained dark "image accordion" panel — Dave asked to
+             replace the Three.js flying-card scene above with this effect
+             instead, modeled on a 21st.dev interactive-image-accordion
+             component he shared. Scoped to just this column (left column/
+             copy stays untouched). Pure CSS (flexbox + flex-grow transition)
+             + a tiny JS toggle — see initAccGallery() in main.js, no WebGL
+             needed. Each panel's content is the real invitation copy/colors
+             (Quimey & Nacho — the real client site — plus the 3 sample
+             designs): no tool is available to export a literal screenshot,
+             so the real names/dates/colors are painted as CSS text instead
+             of a generic photo. The "Nuestros diseños" tag now sits above
+             the stage (not floating over the panels) so it reads cleanly
+             regardless of which panel's background is underneath. The
+             real video (Quimey & Nacho) that briefly lived in panel c1
+             moved to the "Qué incluye" section — see assets/video/. -->
+        <span class="acc-tag">Nuestros diseños</span>
+        <div class="acc-stage" aria-hidden="true">
+          <div class="acc-row">
+            <button type="button" class="acc-panel c1 active">
+              <div class="acc-bg" style="background-image:url('assets/portadas/boho%20romantico/Wedding_invitation_Sof%C3%ADa_Mateo_2K_202607262323.jpeg')"></div>
+              <span class="acc-vert">Sofía &amp; Mateo</span>
+              <span class="acc-info">
+                <span class="acc-info-label">Boho Romántico</span>
+                <span class="acc-info-name">Sofía &amp; Mateo</span>
+                <span class="acc-info-date">15 Abr 2027</span>
+              </span>
+            </button>
+            <button type="button" class="acc-panel c2">
+              <div class="acc-bg" style="background-image:url('assets/portadas/clasica%20elegante.jpeg')"></div>
+              <span class="acc-vert">Valentina &amp; Bruno</span>
+              <span class="acc-info">
+                <span class="acc-info-label">Clásica Elegante</span>
+                <span class="acc-info-name">Valentina &amp; Bruno</span>
+                <span class="acc-info-date">12 Dic 2026</span>
+              </span>
+            </button>
+            <button type="button" class="acc-panel c3">
+              <div class="acc-bg" style="background-image:url('assets/portadas/moderno%20minimalista/Wedding_invitation_digital_cover_2K_202607262350.jpeg')"></div>
+              <span class="acc-vert">Julia &amp; Martín</span>
+              <span class="acc-info">
+                <span class="acc-info-label">Moderna Minimal</span>
+                <span class="acc-info-name">Julia &amp; Martín</span>
+                <span class="acc-info-date">06 Marzo 2027</span>
+              </span>
+            </button>
+            <button type="button" class="acc-panel c4">
+              <div class="acc-bg" style="background-image:url('assets/portadas/Glam%20-%20Art%20Dec%C3%B3.jpeg')"></div>
+              <span class="acc-vert">Isabelle &amp; Julián</span>
+              <span class="acc-info">
+                <span class="acc-info-label">Glam · Art Decó</span>
+                <span class="acc-info-name">Isabelle &amp; Julián</span>
+                <span class="acc-info-date">2 Nov 2024</span>
+              </span>
+            </button>
+            <button type="button" class="acc-panel c5">
+              <div class="acc-bg" style="background-image:url('assets/portadas/glam%20-%20art%20deco/Wedding_invitation_digital_cover_2K_202607270006.jpeg')"></div>
+              <span class="acc-vert">Juan &amp; Naty</span>
+              <span class="acc-info">
+                <span class="acc-info-label">Quedan 270 días</span>
+                <span class="acc-info-name">Juan &amp; Naty</span>
+                <span class="acc-info-date">27 Marzo 2027</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <section class="contact-wrap">
+  <!-- ===================== MARQUEE ===================== -->
+  <div class="marquee-wrap">
+    <div class="marquee" data-es>
+      <span class="tag">Elegante</span><span class="tag">Bohemia</span><span class="tag">Minimalista</span><span class="tag">Campestre</span><span class="tag">Destino</span><span class="tag">Clásica</span>
+      <span class="tag">Elegante</span><span class="tag">Bohemia</span><span class="tag">Minimalista</span><span class="tag">Campestre</span><span class="tag">Destino</span><span class="tag">Clásica</span>
+    </div>
+    <div class="marquee" data-en hidden>
+      <span class="tag">Elegant</span><span class="tag">Boho</span><span class="tag">Minimal</span><span class="tag">Rustic</span><span class="tag">Destination</span><span class="tag">Classic</span>
+      <span class="tag">Elegant</span><span class="tag">Boho</span><span class="tag">Minimal</span><span class="tag">Rustic</span><span class="tag">Destination</span><span class="tag">Classic</span>
+    </div>
+  </div>
+
+  <!-- ===================== FEATURED WORK — full-bleed grid ===================== -->
+  <section id="trabajos" class="works-section">
     <div class="container">
-      <div class="contact-grid">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span data-es>Diseños</span><span data-en hidden>Designs</span></span>
+        <h2><span data-es>Elegí tu estilo</span><span data-en hidden>Choose your style</span></h2>
+        <p class="lede"><span data-es>Cada estilo es un punto de partida: ajustamos colores, tipografías y secciones a tu boda.</span><span data-en hidden>Every style is a starting point — we adjust colors, fonts and sections to fit your wedding.</span></p>
+      </div>
+    </div>
 
-        <!-- Info lateral -->
-        <aside class="contact-info reveal">
-          <p class="contact-info-body">
-            <span data-es>Completá el formulario y te respondemos el mismo día. Queremos saber todo sobre vos y tu evento para crear algo que los represente.</span>
-            <span data-en hidden>Fill out the form and we'll reply the same day. We want to know everything about you and your event to create something that truly represents you.</span>
-          </p>
+    <div class="bleed reveal">
+      <div class="works-grid">
 
-          <div class="contact-info-links">
-            <a class="contact-info-link" href="https://wa.me/5492944152161" target="_blank" rel="noopener">
-              <span class="contact-info-link-icon">💬</span>
-              <span><strong>WhatsApp</strong><br>+54 9 2944 152161</span>
-            </a>
-            <a class="contact-info-link" href="mailto:hola@convitia.com">
-              <span class="contact-info-link-icon">✉</span>
-              <span><strong>Email</strong><br>hola@convitia.com</span>
-            </a>
-            <div class="contact-info-link">
-              <span class="contact-info-link-icon">⏱</span>
-              <span>
-                <strong><span data-es>Respuesta el mismo día</span><span data-en hidden>Same-day response</span></strong><br>
-                <span data-es style="font-size:12px;">Lunes a viernes · 9–20 h</span>
-                <span data-en hidden style="font-size:12px;">Monday–Friday · 9 am–8 pm</span>
-              </span>
-            </div>
+        <a class="work-tile thumb-1" id="work-clasica" href="designs/clasica-elegante.html">
+          <div class="work-visual"><img src="assets/portadas/clasica%20elegante.jpeg" alt="Clásica Elegante" loading="lazy"></div>
+          <span class="work-demo-btn"><span data-es>Ver demo</span><span data-en hidden>View demo</span> →</span>
+          <div class="work-info">
+            <span class="work-name style-font-clasica"><span data-es>Clásica Elegante</span><span data-en hidden>Classic Elegant</span></span>
+            <span class="work-tag"><span data-es>Serif &amp; dorado</span><span data-en hidden>Serif &amp; gold</span></span>
           </div>
+        </a>
 
-          <div class="contact-ornament" aria-hidden="true">✺</div>
-        </aside>
-
-        <!-- Formulario -->
-        <div class="contact-form-card reveal" style="transition-delay:.12s">
-          <p class="form-title"><span data-es>Contanos sobre tu boda</span><span data-en hidden>Tell us about your wedding</span></p>
-          <p class="form-subtitle"><span data-es>Todos los campos son opcionales.</span><span data-en hidden>All fields are optional.</span></p>
-
-          <form id="contactForm" novalidate>
-            <div class="form-grid">
-
-              <!-- Nombre -->
-              <div class="form-group">
-                <input type="text" id="nombre" name="nombre" placeholder=" " autocomplete="name">
-                <label class="form-label" for="nombre"><span data-es>Nombre de ustedes</span><span data-en hidden>Your names</span></label>
-              </div>
-
-              <!-- Fecha -->
-              <div class="form-group">
-                <input type="date" id="fecha" name="fecha">
-                <label class="form-label" for="fecha"><span data-es>Fecha del evento</span><span data-en hidden>Event date</span></label>
-              </div>
-
-              <!-- Email -->
-              <div class="form-group">
-                <input type="email" id="email" name="email" placeholder=" " autocomplete="email">
-                <label class="form-label" for="email">Email</label>
-              </div>
-
-              <!-- Teléfono -->
-              <div class="form-group">
-                <input type="tel" id="telefono" name="telefono" placeholder=" " autocomplete="tel">
-                <label class="form-label" for="telefono"><span data-es>Teléfono / WhatsApp</span><span data-en hidden>Phone / WhatsApp</span></label>
-              </div>
-
-              <!-- Lugar -->
-              <div class="form-group">
-                <input type="text" id="lugar" name="lugar" placeholder=" ">
-                <label class="form-label" for="lugar"><span data-es>¿Dónde es el evento?</span><span data-en hidden>Where is the event?</span></label>
-              </div>
-
-              <!-- Invitados -->
-              <div class="form-group">
-                <input type="text" id="invitados" name="invitados" placeholder=" " inputmode="numeric">
-                <label class="form-label" for="invitados"><span data-es>Cantidad de invitados</span><span data-en hidden>Number of guests</span></label>
-              </div>
-
-              <div class="form-divider"></div>
-
-              <!-- Tipo de evento (chips) -->
-              <div class="form-group full" style="margin-bottom:24px;">
-                <span class="form-chips-label"><span data-es>¿Cuál es tu evento?</span><span data-en hidden>What's your event?</span></span>
-                <div class="form-chips" role="radiogroup" aria-label="Tipo de evento">
-                  <div class="chip-option">
-                    <input type="radio" name="tipo_evento" id="ev_boda" value="Boda">
-                    <label for="ev_boda"><span data-es>💍 Boda</span><span data-en hidden>💍 Wedding</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="radio" name="tipo_evento" id="ev_15" value="15 años">
-                    <label for="ev_15"><span data-es>🎀 15 años</span><span data-en hidden>🎀 Quinceañera</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="radio" name="tipo_evento" id="ev_aniversario" value="Aniversario">
-                    <label for="ev_aniversario"><span data-es>💛 Aniversario</span><span data-en hidden>💛 Anniversary</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="radio" name="tipo_evento" id="ev_otro" value="Otro evento">
-                    <label for="ev_otro"><span data-es>✨ Otro</span><span data-en hidden>✨ Other</span></label>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Dónde se realiza (chips) -->
-              <div class="form-group full" style="margin-bottom:24px;">
-                <span class="form-chips-label"><span data-es>¿Dónde se realiza el evento?</span><span data-en hidden>Where is the event taking place?</span></span>
-                <div class="form-chips" role="radiogroup" aria-label="Dónde se realiza el evento">
-                  <div class="chip-option">
-                    <input type="radio" name="lugar_tipo" id="lt_salon" value="Salón">
-                    <label for="lt_salon"><span data-es>🏛 Salón</span><span data-en hidden>🏛 Indoor venue</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="radio" name="lugar_tipo" id="lt_aire" value="Aire libre">
-                    <label for="lt_aire"><span data-es>🌿 Aire libre</span><span data-en hidden>🌿 Outdoor</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="radio" name="lugar_tipo" id="lt_ambos" value="Salón + Aire libre">
-                    <label for="lt_ambos"><span data-es>✨ Ambos</span><span data-en hidden>✨ Both</span></label>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Diseño / temática (chips) -->
-              <div class="form-group full" style="margin-bottom:24px;">
-                <span class="form-chips-label"><span data-es>¿Qué diseño o temática les gustó?</span><span data-en hidden>Which design or theme caught your eye?</span></span>
-                <div class="form-chips" role="radiogroup" aria-label="Diseño o temática">
-                  <div class="chip-option">
-                    <input type="radio" name="diseno" id="ds_clasica" value="Clásica Elegante">
-                    <label for="ds_clasica"><span data-es>🤍 Clásica Elegante</span><span data-en hidden>🤍 Classic Elegant</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="radio" name="diseno" id="ds_moderno" value="Moderno Minimalista">
-                    <label for="ds_moderno"><span data-es>◻ Moderno Minimalista</span><span data-en hidden>◻ Modern Minimalist</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="radio" name="diseno" id="ds_boho" value="Boho Romántico">
-                    <label for="ds_boho"><span data-es>🌸 Boho Romántico</span><span data-en hidden>🌸 Boho Romantic</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="radio" name="diseno" id="ds_glam" value="Glam / Art Decó">
-                    <label for="ds_glam"><span data-es>✦ Glam / Art Decó</span><span data-en hidden>✦ Glam / Art Deco</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="radio" name="diseno" id="ds_propio" value="Personalizado">
-                    <label for="ds_propio"><span data-es>🎨 Personalizado</span><span data-en hidden>🎨 Custom</span></label>
-                  </div>
-                </div>
-              </div>
-
-              <!-- DJ / Sonido / Iluminación (chips) -->
-              <div class="form-group full" style="margin-bottom:24px;">
-                <span class="form-chips-label"><span data-es>¿Tienen DJ, sonido, iluminación y pantallas?</span><span data-en hidden>Do you have DJ, sound, lighting &amp; screens?</span></span>
-                <div class="form-chips" role="radiogroup" aria-label="DJ sonido iluminación">
-                  <div class="chip-option">
-                    <input type="radio" name="av_sonido" id="av_si" value="Sí, tenemos resuelto">
-                    <label for="av_si"><span data-es>✅ Sí, tenemos resuelto</span><span data-en hidden>✅ Yes, all sorted</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="radio" name="av_sonido" id="av_no" value="No, ayúdanos">
-                    <label for="av_no"><span data-es>🙋 No, ¡ayúdanos!</span><span data-en hidden>🙋 No, help us!</span></label>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Mensaje libre -->
-              <div class="form-group full">
-                <textarea id="mensaje" name="mensaje" placeholder=" "></textarea>
-                <label class="form-label" for="mensaje"><span data-es>¿Algo más que quieras contarnos?</span><span data-en hidden>Anything else you'd like to share?</span></label>
-              </div>
-
-              <!-- Plan preferido (chips) -->
-              <div class="form-group full" style="margin-bottom:24px;">
-                <span class="form-chips-label"><span data-es>¿Qué plan te gustó más?</span><span data-en hidden>Which plan caught your eye?</span></span>
-                <div class="form-chips" role="radiogroup" aria-label="Plan preferido">
-                  <div class="chip-option">
-                    <input type="radio" name="plan_elegido" id="pl_esencial" value="Esencial">
-                    <label for="pl_esencial"><span data-es>Esencial</span><span data-en hidden>Esencial</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="radio" name="plan_elegido" id="pl_deluxe" value="Deluxe">
-                    <label for="pl_deluxe"><span data-es>Deluxe</span><span data-en hidden>Deluxe</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="radio" name="plan_elegido" id="pl_full" value="Full Personalizado">
-                    <label for="pl_full"><span data-es>Full Personalizado</span><span data-en hidden>Full Personalizado</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="radio" name="plan_elegido" id="pl_nodecidido" value="Todavía no lo sé">
-                    <label for="pl_nodecidido"><span data-es>Todavía no lo sé</span><span data-en hidden>Not sure yet</span></label>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Complementos deseados (checkboxes — multiopción) -->
-              <div class="form-group full" style="margin-bottom:24px;">
-                <span class="form-chips-label"><span data-es>¿Qué complemento desea sumar?</span><span data-en hidden>Which add-on would you like?</span></span>
-                <div class="form-chips" role="group" aria-label="Complementos deseados">
-                  <div class="chip-option">
-                    <input type="checkbox" name="complemento" id="comp_urgencia" value="Urgencia <48 hs">
-                    <label for="comp_urgencia"><span data-es>⚡ Urgencia &lt;48 hs</span><span data-en hidden>⚡ Rush &lt;48 h</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="checkbox" name="complemento" id="comp_std" value="Save the Date">
-                    <label for="comp_std"><span data-es>📅 Save the Date</span><span data-en hidden>📅 Save the Date</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="checkbox" name="complemento" id="comp_gracias" value="Versión Gracias post-evento">
-                    <label for="comp_gracias"><span data-es>💌 Versión Gracias post-evento</span><span data-en hidden>💌 Thank you post-event</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="checkbox" name="complemento" id="comp_seccion" value="Sección adicional">
-                    <label for="comp_seccion"><span data-es>➕ Sección adicional</span><span data-en hidden>➕ Additional section</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="checkbox" name="complemento" id="comp_idioma" value="Idioma adicional">
-                    <label for="comp_idioma"><span data-es>🌐 Idioma adicional</span><span data-en hidden>🌐 Additional language</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="checkbox" name="complemento" id="comp_video" value="Video reveal para redes">
-                    <label for="comp_video"><span data-es>🎬 Video reveal para redes</span><span data-en hidden>🎬 Social media reveal video</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="checkbox" name="complemento" id="comp_fotovideo" value="Producción de fotos / video">
-                    <label for="comp_fotovideo"><span data-es>📸 Producción de fotos / video</span><span data-en hidden>📸 Photo &amp; video production</span></label>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Cómo nos conociste (chips) — siempre lo último -->
-              <div class="form-group full" style="margin-bottom:24px;">
-                <span class="form-chips-label"><span data-es>¿Cómo nos conociste?</span><span data-en hidden>How did you find us?</span></span>
-                <div class="form-chips" role="radiogroup" aria-label="Cómo nos conociste">
-                  <div class="chip-option">
-                    <input type="radio" name="como_conociste" id="ck_reco" value="Recomendación">
-                    <label for="ck_reco"><span data-es>🤍 Recomendación</span><span data-en hidden>🤍 Referral</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="radio" name="como_conociste" id="ck_social" value="Redes sociales">
-                    <label for="ck_social"><span data-es>📱 Redes sociales</span><span data-en hidden>📱 Social media</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="radio" name="como_conociste" id="ck_google" value="Buscador">
-                    <label for="ck_google"><span data-es>🔍 Buscador</span><span data-en hidden>🔍 Search engine</span></label>
-                  </div>
-                  <div class="chip-option">
-                    <input type="radio" name="como_conociste" id="ck_otro" value="Otro">
-                    <label for="ck_otro"><span data-es>💬 Otro</span><span data-en hidden>💬 Other</span></label>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Submit -->
-              <div class="form-submit-row">
-                <p class="form-submit-note">
-                  <span data-es><strong>Te respondemos el mismo día</strong> por email o WhatsApp.</span>
-                  <span data-en hidden><strong>We reply the same day</strong> by email or WhatsApp.</span>
-                </p>
-                <button type="submit" class="btn-submit">
-                  <span data-es>Enviar mensaje</span><span data-en hidden>Send message</span>
-                  <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <path d="M3 10h14M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </button>
-              </div>
-
-            </div>
-          </form>
-
-          <!-- Estado de éxito -->
-          <div class="form-success" id="formSuccess">
-            <div class="form-success-icon">💌</div>
-            <h3><span data-es>¡Mensaje enviado!</span><span data-en hidden>Message sent!</span></h3>
-            <p>
-              <span data-es>Gracias por escribirnos — te contactamos en el día.</span>
-              <span data-en hidden>Thanks for reaching out — we'll be in touch today.</span>
-            </p>
-            <a class="btn btn-primary" style="margin-top:16px;" href="https://wa.me/5492944152161" target="_blank" rel="noopener">
-              <span data-es>También podés escribirnos por WhatsApp</span><span data-en hidden>You can also message us on WhatsApp</span>
-            </a>
+        <a class="work-tile thumb-2" id="work-moderno" href="designs/moderna-minimal.html">
+          <div class="work-visual"><img src="assets/portadas/Moderno%20Minimalista.jpeg" alt="Moderno Minimalista" loading="lazy"></div>
+          <span class="work-demo-btn"><span data-es>Ver demo</span><span data-en hidden>View demo</span> →</span>
+          <div class="work-info">
+            <span class="work-name style-font-moderno"><span data-es>Moderno Minimalista</span><span data-en hidden>Modern Minimal</span></span>
+            <span class="work-tag"><span data-es>Líneas limpias</span><span data-en hidden>Clean lines</span></span>
           </div>
-        </div>
+        </a>
+
+        <a class="work-tile thumb-3" id="work-boho" href="designs/boho-romantico.html">
+          <div class="work-visual"><img src="assets/portadas/Boho%20Rom%C3%A1ntico.jpeg" alt="Boho Romántico" loading="lazy"></div>
+          <span class="work-demo-btn"><span data-es>Ver demo</span><span data-en hidden>View demo</span> →</span>
+          <div class="work-info">
+            <span class="work-name style-font-boho"><span data-es>Boho Romántico</span><span data-en hidden>Boho Romantic</span></span>
+            <span class="work-tag"><span data-es>Terracota &amp; salvia</span><span data-en hidden>Terracotta &amp; sage</span></span>
+          </div>
+        </a>
+
+        <a class="work-tile thumb-4" id="work-glam" href="designs/glam-art-deco.html">
+          <div class="work-visual"><img src="assets/portadas/Glam%20-%20Art%20Dec%C3%B3.jpeg" alt="Glam / Art Decó" loading="lazy"></div>
+          <span class="work-demo-btn"><span data-es>Ver demo</span><span data-en hidden>View demo</span> →</span>
+          <div class="work-info">
+            <span class="work-name style-font-glam"><span data-es>Glam / Art Decó</span><span data-en hidden>Glam / Art Deco</span></span>
+            <span class="work-tag"><span data-es>Negro &amp; dorado</span><span data-en hidden>Black &amp; gold</span></span>
+          </div>
+        </a>
 
       </div>
+    </div>
+  </section>
+
+  <!-- ===================== FULL-BLEED TYPE BREAK ===================== -->
+  <section class="bleed type-break reveal">
+    <p>
+      <span data-es>Cada invitación cuenta <em>una historia distinta</em>.</span>
+      <span data-en hidden>Every invitation tells <em>a different story</em>.</span>
+    </p>
+    <a class="btn btn-primary type-break-cta" href="contacto/">
+      <span data-es>Quiero mi invitación personalizada.</span><span data-en hidden>I want my personalized invitation.</span>
+    </a>
+  </section>
+
+  <!-- ===================== INCLUDED — sticky label ===================== -->
+  <section id="incluye">
+    <div class="container sticky-grid">
+      <div class="sticky-label reveal">
+        <span class="eyebrow"><span data-es>Qué incluye</span><span data-en hidden>What's included</span></span>
+        <h2><span data-es>Todo lo que necesitás, en un solo lugar</span><span data-en hidden>Everything you need, in one place</span></h2>
+        <p class="lede"><span data-es>Un estudio chico, atención grande: tu boda no es un número más en una lista.</span><span data-en hidden>A small studio, big attention — your wedding isn't one more number on a list.</span></p>
+        <div class="incluye-video-wrap reveal">
+          <video class="incluye-video" src="assets/video/convitia-demo.mp4"
+            autoplay muted loop playsinline
+            poster="assets/portadas/Glam%20-%20Art%20Dec%C3%B3.jpeg"
+            style="object-fit:cover;width:100%;height:100%;display:block;">
+          </video>
+        </div>
+      </div>
+      <div class="sticky-list">
+        <div class="sticky-row reveal"><span class="row-num">01</span><div><h3><span data-es>Diseño personalizado</span><span data-en hidden>Custom design</span></h3><p><span data-es>Con tus colores y tus fotos.</span><span data-en hidden>With your colors and photos.</span></p></div></div>
+        <div class="sticky-row reveal"><span class="row-num">02</span><div><h3><span data-es>Sobre animado</span><span data-en hidden>Animated envelope</span></h3><p><span data-es>Una apertura que sorprende desde el primer segundo.</span><span data-en hidden>An opening that surprises from the very first second.</span></p></div></div>
+        <div class="sticky-row reveal"><span class="row-num">03</span><div><h3><span data-es>RSVP inteligente</span><span data-en hidden>Smart RSVP</span></h3><p><span data-es>Confirmaciones en tiempo real, sin planillas.</span><span data-en hidden>Real-time confirmations, no spreadsheets.</span></p></div></div>
+        <div class="sticky-row reveal"><span class="row-num">04</span><div><h3><span data-es>Cuenta regresiva y mapa</span><span data-en hidden>Countdown and map</span></h3><p><span data-es>Todo lo que tus invitados necesitan saber.</span><span data-en hidden>Everything your guests need to know.</span></p></div></div>
+        <div class="sticky-row reveal"><span class="row-num">05</span><div><h3><span data-es>Actualizaciones ilimitadas</span><span data-en hidden>Unlimited updates</span></h3><p><span data-es>Hasta el día del evento, sin costo extra.</span><span data-en hidden>Until the event, at no extra cost.</span></p></div></div>
+        <div class="sticky-row reveal"><span class="row-num">06</span><div><h3><span data-es>Diseñador por WhatsApp</span><span data-en hidden>Designer on WhatsApp</span></h3><p><span data-es>Una persona real, no un bot, respondiendo tus mensajes.</span><span data-en hidden>A real person, not a bot, answering your messages.</span></p></div></div>
+        <div class="sticky-row reveal"><span class="row-num">07</span><div><h3><span data-es>Bilingüe</span><span data-en hidden>Bilingual</span></h3><p><span data-es>Disponible en el idioma que necesites.</span><span data-en hidden>Available in any language you need.</span></p></div></div>
+        <div class="sticky-row reveal"><span class="row-num">08</span><div><h3><span data-es>Un link, invitados ilimitados</span><span data-en hidden>One link, unlimited guests</span></h3><p><span data-es>Sin costo por invitado, sin límites.</span><span data-en hidden>No per-guest cost, no limits.</span></p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STATS BAND ===================== -->
+  <section class="bleed stats-band">
+    <div class="stats-grid">
+      <div class="reveal"><b>48-72h</b><span><span data-es>Entrega express</span><span data-en hidden>Express delivery</span></span></div>
+      <div class="reveal"><b>∞</b><span><span data-es>Cambios incluidos</span><span data-en hidden>Revisions included</span></span></div>
+      <div class="reveal"><b data-count="1">0</b><span><span data-es>Link, invitados ilimitados</span><span data-en hidden>Link, unlimited guests</span></span></div>
+      <div class="reveal"><b data-count="4">0</b><span><span data-es>Estilos para elegir</span><span data-en hidden>Styles to choose from</span></span></div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS — sticky label left, steps right ===================== -->
+  <section id="como-funciona">
+    <div class="container sticky-grid">
+      <div class="sticky-label reveal">
+        <span class="eyebrow"><span data-es>Proceso simple</span><span data-en hidden>Simple process</span></span>
+        <h2><span data-es>Cómo funciona</span><span data-en hidden>How it works</span></h2>
+        <p class="lede"><span data-es>Tres pasos, sin vueltas, desde el primer mensaje hasta el link final.</span><span data-en hidden>Three steps, no detours, from the first message to the final link.</span></p>
+      </div>
+      <div class="sticky-list">
+        <div class="sticky-row reveal"><span class="row-num">01</span><div><h3><span data-es>Contanos tu historia</span><span data-en hidden>Tell us your story</span></h3><p><span data-es>Elegís un estilo de referencia y nos contás los detalles de tu boda: fecha, lugar, colores, lo que tengas en mente.</span><span data-en hidden>Pick a reference style and tell us your wedding details: date, venue, colors, anything you have in mind.</span></p></div></div>
+        <div class="sticky-row reveal"><span class="row-num">02</span><div><h3><span data-es>Tu diseñador crea la primera versión</span><span data-en hidden>Your designer builds the first version</span></h3><p><span data-es>En pocos días tenés tu invitación lista para revisar, con tus fotos y tu información.</span><span data-en hidden>Within a few days you'll have your invitation ready to review, with your own photos and details.</span></p></div></div>
+        <div class="sticky-row reveal"><span class="row-num">03</span><div><h3><span data-es>Ajustamos y la compartís</span><span data-en hidden>We adjust it and you share it</span></h3><p><span data-es>Pedís los cambios que quieras hasta que quede perfecta. Después, un solo link para todos tus invitados.</span><span data-en hidden>Ask for any changes until it's perfect. Then, one single link for all your guests.</span></p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DESIGNS — 3D page carousel, drag to spin ===================== -->
+  <section id="diferencia">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow"><span data-es>Nuestra diferencia</span><span data-en hidden>Our difference</span></span>
+        <h2><span data-es>Lo que nos hace diferentes</span><span data-en hidden>What makes us different</span></h2>
+        <p class="lede"><span data-es>No somos una plantilla más. Mirá nuestros estilos — cada invitación se construye con vos, no para vos.</span><span data-en hidden>We're not just another template. Take a look at our styles — every invitation is built with you, not just for you.</span></p>
+      </div>
+
+      <div class="book-deck reveal">
+        <div class="book-track">
+          <!-- Clásica Elegante -->
+          <a class="book-card style-clasica" href="designs/clasica-elegante.html" target="_blank" rel="noopener" draggable="false">
+            <div class="book-bg" style="background-image:url('assets/portadas/clasica%20elegante.jpeg')"></div>
+            <div class="book-ornament">✺</div>
+            <h3><span data-es>Clásica Elegante</span><span data-en hidden>Classic Elegant</span></h3>
+            <span class="book-tag"><span data-es>Serif &amp; dorado</span><span data-en hidden>Serif &amp; gold</span></span>
+          </a>
+          <!-- Moderno Minimalista -->
+          <a class="book-card style-moderna" href="designs/moderna-minimal.html" target="_blank" rel="noopener" draggable="false">
+            <div class="book-bg" style="background-image:url('assets/portadas/Moderno%20Minimalista.jpeg')"></div>
+            <div class="book-ornament">／</div>
+            <h3><span data-es>Moderna Minimal</span><span data-en hidden>Modern Minimal</span></h3>
+            <span class="book-tag"><span data-es>Líneas limpias</span><span data-en hidden>Clean lines</span></span>
+          </a>
+          <a class="book-card style-moderna" href="designs/moderna-minimal.html" target="_blank" rel="noopener" draggable="false">
+            <div class="book-bg" style="background-image:url('assets/portadas/moderno%20minimalista/Wedding_invitation_digital_cover_2K_202607262350.jpeg')"></div>
+            <div class="book-ornament">／</div>
+            <h3><span data-es>Moderna Minimal</span><span data-en hidden>Modern Minimal</span></h3>
+            <span class="book-tag"><span data-es>Líneas limpias</span><span data-en hidden>Clean lines</span></span>
+          </a>
+          <a class="book-card style-moderna" href="designs/moderna-minimal.html" target="_blank" rel="noopener" draggable="false">
+            <div class="book-bg" style="background-image:url('assets/portadas/moderno%20minimalista/Wedding_invitation_digital_cover_2K_202607262351.jpeg')"></div>
+            <div class="book-ornament">／</div>
+            <h3><span data-es>Moderna Minimal</span><span data-en hidden>Modern Minimal</span></h3>
+            <span class="book-tag"><span data-es>Líneas limpias</span><span data-en hidden>Clean lines</span></span>
+          </a>
+          <a class="book-card style-moderna" href="designs/moderna-minimal.html" target="_blank" rel="noopener" draggable="false">
+            <div class="book-bg" style="background-image:url('assets/portadas/moderno%20minimalista/Wedding_invitation_digital_cover_2K_202607262351%20%281%29.jpeg')"></div>
+            <div class="book-ornament">／</div>
+            <h3><span data-es>Moderna Minimal</span><span data-en hidden>Modern Minimal</span></h3>
+            <span class="book-tag"><span data-es>Líneas limpias</span><span data-en hidden>Clean lines</span></span>
+          </a>
+          <!-- Boho Romántico -->
+          <a class="book-card style-boho" href="designs/boho-romantico.html" target="_blank" rel="noopener" draggable="false">
+            <div class="book-bg" style="background-image:url('assets/portadas/Boho%20Rom%C3%A1ntico.jpeg')"></div>
+            <div class="book-ornament">❀</div>
+            <h3><span data-es>Boho Romántico</span><span data-en hidden>Boho Romantic</span></h3>
+            <span class="book-tag"><span data-es>Terracota &amp; salvia</span><span data-en hidden>Terracotta &amp; sage</span></span>
+          </a>
+          <a class="book-card style-boho" href="designs/boho-romantico.html" target="_blank" rel="noopener" draggable="false">
+            <div class="book-bg" style="background-image:url('assets/portadas/boho%20romantico/Wedding_invitation_digital_cover_2K_202607262352.jpeg')"></div>
+            <div class="book-ornament">❀</div>
+            <h3><span data-es>Boho Romántico</span><span data-en hidden>Boho Romantic</span></h3>
+            <span class="book-tag"><span data-es>Terracota &amp; salvia</span><span data-en hidden>Terracotta &amp; sage</span></span>
+          </a>
+          <a class="book-card style-boho" href="designs/boho-romantico.html" target="_blank" rel="noopener" draggable="false">
+            <div class="book-bg" style="background-image:url('assets/portadas/boho%20romantico/Wedding_invitation_digital_cover_2K_202607262353.jpeg')"></div>
+            <div class="book-ornament">❀</div>
+            <h3><span data-es>Boho Romántico</span><span data-en hidden>Boho Romantic</span></h3>
+            <span class="book-tag"><span data-es>Terracota &amp; salvia</span><span data-en hidden>Terracotta &amp; sage</span></span>
+          </a>
+          <a class="book-card style-boho" href="designs/boho-romantico.html" target="_blank" rel="noopener" draggable="false">
+            <div class="book-bg" style="background-image:url('assets/portadas/boho%20romantico/Wedding_invitation_cover_Luna_Paz_202607262323.jpeg')"></div>
+            <div class="book-ornament">❀</div>
+            <h3><span data-es>Boho Romántico</span><span data-en hidden>Boho Romantic</span></h3>
+            <span class="book-tag"><span data-es>Terracota &amp; salvia</span><span data-en hidden>Terracotta &amp; sage</span></span>
+          </a>
+          <a class="book-card style-boho" href="designs/boho-romantico.html" target="_blank" rel="noopener" draggable="false">
+            <div class="book-bg" style="background-image:url('assets/portadas/boho%20romantico/Wedding_invitation_Sof%C3%ADa_Mateo_2K_202607262323.jpeg')"></div>
+            <div class="book-ornament">❀</div>
+            <h3><span data-es>Boho Romántico</span><span data-en hidden>Boho Romantic</span></h3>
+            <span class="book-tag"><span data-es>Terracota &amp; salvia</span><span data-en hidden>Terracotta &amp; sage</span></span>
+          </a>
+          <!-- Glam / Art Decó -->
+          <a class="book-card style-glam" href="designs/glam-art-deco.html" target="_blank" rel="noopener" draggable="false">
+            <div class="book-bg" style="background-image:url('assets/portadas/Glam%20-%20Art%20Dec%C3%B3.jpeg')"></div>
+            <div class="book-ornament">◈</div>
+            <h3><span data-es>Glam · Art Decó</span><span data-en hidden>Glam · Art Deco</span></h3>
+            <span class="book-tag"><span data-es>Negro &amp; dorado</span><span data-en hidden>Black &amp; gold</span></span>
+          </a>
+          <a class="book-card style-glam" href="designs/glam-art-deco.html" target="_blank" rel="noopener" draggable="false">
+            <div class="book-bg" style="background-image:url('assets/portadas/glam%20-%20art%20deco/Wedding_invitation_digital_cover_2K_202607270006.jpeg')"></div>
+            <div class="book-ornament">◈</div>
+            <h3><span data-es>Glam · Art Decó</span><span data-en hidden>Glam · Art Deco</span></h3>
+            <span class="book-tag"><span data-es>Negro &amp; dorado</span><span data-en hidden>Black &amp; gold</span></span>
+          </a>
+          <a class="book-card style-glam" href="designs/glam-art-deco.html" target="_blank" rel="noopener" draggable="false">
+            <div class="book-bg" style="background-image:url('assets/portadas/glam%20-%20art%20deco/Wedding_invitation_digital_cover_2K_202607270006%20%281%29.jpeg')"></div>
+            <div class="book-ornament">◈</div>
+            <h3><span data-es>Glam · Art Decó</span><span data-en hidden>Glam · Art Deco</span></h3>
+            <span class="book-tag"><span data-es>Negro &amp; dorado</span><span data-en hidden>Black &amp; gold</span></span>
+          </a>
+          <a class="book-card style-glam" href="designs/glam-art-deco.html" target="_blank" rel="noopener" draggable="false">
+            <div class="book-bg" style="background-image:url('assets/portadas/glam%20-%20art%20deco/Wedding_invitation_digital_cover_2K_202607270006%20%282%29.jpeg')"></div>
+            <div class="book-ornament">◈</div>
+            <h3><span data-es>Glam · Art Decó</span><span data-en hidden>Glam · Art Deco</span></h3>
+            <span class="book-tag"><span data-es>Negro &amp; dorado</span><span data-en hidden>Black &amp; gold</span></span>
+          </a>
+        </div>
+      </div>
+      <p class="book-hint reveal"><span data-es>Arrastrá para girar y ver los estilos ↔</span><span data-en hidden>Drag to spin through the styles ↔</span></p>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section id="preguntas">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow"><span data-es>Preguntas frecuentes</span><span data-en hidden>FAQ</span></span>
+        <h2><span data-es>Todo lo que querés saber</span><span data-en hidden>Everything you want to know</span></h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-q"><span><span data-es>¿Qué puedo personalizar?</span><span data-en hidden>What can I customize?</span></span><span class="plus">+</span></button>
+          <div class="faq-a"><p><span data-es>Colores, tipografías, fotos, textos, música, secciones... la invitación se adapta a tu boda, no al revés.</span><span data-en hidden>Colors, fonts, photos, copy, music, sections — the invitation adapts to your wedding, not the other way around.</span></p></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q"><span><span data-es>¿Cómo veo las confirmaciones de mis invitados?</span><span data-en hidden>How do I see my guests' RSVPs?</span></span><span class="plus">+</span></button>
+          <div class="faq-a"><p><span data-es>Tenés un panel simple donde se registran las respuestas en tiempo real, con cantidad de personas y restricciones alimentarias si las pedís.</span><span data-en hidden>You get a simple panel where responses are logged in real time, including headcount and dietary notes if you ask for them.</span></p></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q"><span><span data-es>¿Es más económico que las invitaciones de papel?</span><span data-en hidden>Is it cheaper than paper invitations?</span></span><span class="plus">+</span></button>
+          <div class="faq-a"><p><span data-es>Sí: pagás una sola vez sin importar cuántos invitados tengas, y no hay costos de impresión ni envío.</span><span data-en hidden>Yes — you pay once regardless of guest count, with no printing or postage costs.</span></p></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q"><span><span data-es>¿Qué pasa si necesito cambios después de la primera versión?</span><span data-en hidden>What if I need changes after the first version?</span></span><span class="plus">+</span></button>
+          <div class="faq-a"><p><span data-es>Los pedís y los hacemos. No hay límite de revisiones ni cargos extra mientras se trate de tu mismo evento.</span><span data-en hidden>Just ask — we'll make them. There's no revision limit or extra charge for the same event.</span></p></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q"><span><span data-es>No sé qué estilo quiero, ¿me pueden ayudar?</span><span data-en hidden>I'm not sure what style I want — can you help?</span></span><span class="plus">+</span></button>
+          <div class="faq-a"><p><span data-es>Sí. Mirás los estilos de la sección de diseños y, si ninguno te cierra del todo, charlamos y armamos uno a tu medida.</span><span data-en hidden>Yes. Browse the designs section, and if none feels quite right, we'll talk it through and build something custom.</span></p></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q"><span><span data-es>¿Mis invitados necesitan instalar algo?</span><span data-en hidden>Do my guests need to install anything?</span></span><span class="plus">+</span></button>
+          <div class="faq-a"><p><span data-es>No. Es un link que se abre en cualquier navegador, de celular o de computadora, sin apps ni registro.</span><span data-en hidden>No. It's a link that opens in any browser, on phone or computer — no apps, no sign-up.</span></p></div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-q"><span><span data-es>¿Hasta cuándo está disponible la invitación?</span><span data-en hidden>How long will the invitation stay online?</span></span><span class="plus">+</span></button>
+          <div class="faq-a"><p><span data-es>La dejamos online al menos hasta el día de tu boda; si querés conservarla como recuerdo, también lo charlamos.</span><span data-en hidden>It stays live at least through your wedding day; if you'd like to keep it as a keepsake afterward, we can talk about that too.</span></p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PLANES / PRECIOS ===================== -->
+  <section id="planes">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow"><span data-es>Planes & precios</span><span data-en hidden>Plans & pricing</span></span>
+        <h2><span data-es>Elegí la que más <em class="planes-accent">se adapte a vos</em></span><span data-en hidden>Find the plan that <em class="planes-accent">fits you best</em></span></h2>
+        <p class="lede" style="margin:0 auto 0"><span data-es>Precios en USD. Un pago único, sin cargo por invitado, link activo para siempre.</span><span data-en hidden>Prices in USD. One-time payment, no per-guest cost, link stays live.</span></p>
+      </div>
+
+      <div class="planes-banner-strip">COMPRÁ DESDE CUALQUIER PARTE DEL MUNDO · UN LINK · INVITADOS ILIMITADOS</div>
+
+      <!-- Tres planes -->
+      <div class="planes-grid reveal">
+        <!-- Esencial -->
+        <div class="plan-card">
+          <div class="plan-card-tag"><img src="assets/logo/logo1.svg?v=20260627g" alt="Convitia" class="plan-card-logo"></div>
+          <h3 class="plan-card-name">Esencial</h3>
+          <p class="plan-card-sub">EL ESTILO CONVITIA, ADAPTADO A TU HISTORIA</p>
+          <div class="plan-card-price">USD <strong>89</strong></div>
+          <p class="plan-card-ideal">Pago único · Sin cargo por invitado</p>
+          <ul class="plan-card-list">
+            <li>Estilo del catálogo adaptado a tu paleta</li>
+            <li>Portada animada con cuenta regresiva</li>
+            <li>Fecha, lugar y mapa interactivo</li>
+            <li>Dresscode</li>
+            <li>RSVP (confirmación de asistencia)</li>
+            <li>1 ronda de ajustes</li>
+            <li>Link activo 12 meses · Entrega 4 días hábiles</li>
+          </ul>
+          <a class="plan-card-btn" href="contacto/">EMPEZAR</a>
+          <div class="plan-card-footer">
+            <span class="plan-card-domain plan-card-domain--no"><span data-es>Dominio www no incluido</span><span data-en hidden>Domain not included</span></span>
+            <span class="plan-card-maintenance"><span data-es>+ USD 10/mes · mantenimiento y hosting</span><span data-en hidden>+ USD 10/mo · maintenance & hosting</span></span>
+          </div>
+        </div>
+        <!-- Deluxe — featured -->
+        <div class="plan-card plan-card--featured">
+          <div class="plan-card-popular"><span data-es>Más elegido</span><span data-en hidden>Most popular</span></div>
+          <div class="plan-card-tag"><img src="assets/logo/logo1.svg?v=20260627g" alt="Convitia" class="plan-card-logo"></div>
+          <h3 class="plan-card-name">Deluxe</h3>
+          <p class="plan-card-sub">TU HISTORIA COMPLETA, DE LA PROPUESTA AL ALTAR</p>
+          <div class="plan-card-price">USD <strong>169</strong></div>
+          <p class="plan-card-ideal">Pago único · Sin cargo por invitado</p>
+          <ul class="plan-card-list">
+            <li>Todo el plan Esencial</li>
+            <li>Nuestra historia (sección animada)</li>
+            <li>Programa del evento</li>
+            <li>Galería de fotos (hasta 15 imágenes)</li>
+            <li>Música ambiental a elección</li>
+            <li>RSVP completo (menú, alergias, pases)</li>
+            <li>Lista de regalos / info bancaria</li>
+            <li>2 rondas de ajustes</li>
+            <li>Link activo 18 meses · Entrega 6 días hábiles</li>
+          </ul>
+          <a class="plan-card-btn" href="contacto/">EMPEZAR</a>
+          <div class="plan-card-footer">
+            <span class="plan-card-domain plan-card-domain--no"><span data-es>Dominio www no incluido</span><span data-en hidden>Domain not included</span></span>
+            <span class="plan-card-maintenance"><span data-es>+ USD 10/mes · mantenimiento y hosting</span><span data-en hidden>+ USD 10/mo · maintenance & hosting</span></span>
+          </div>
+        </div>
+        <!-- Full — dark card -->
+        <div class="plan-card plan-card--full">
+          <div class="plan-card-tag"><img src="assets/logo/logo1.svg?v=20260627g" alt="Convitia" class="plan-card-logo plan-card-logo--white"></div>
+          <h3 class="plan-card-name">Full Personalizado</h3>
+          <p class="plan-card-sub">UNA EXPERIENCIA EDITORIAL ÚNICA. SIN TEMPLATE, SIN LÍMITES</p>
+          <div class="plan-card-price">USD <strong>289</strong></div>
+          <p class="plan-card-ideal">Pago único · Sin cargo por invitado</p>
+          <ul class="plan-card-list">
+            <li>Todo el plan Deluxe</li>
+            <li>Diseño 100% exclusivo (no del catálogo)</li>
+            <li>Video o slideshow cinematográfico</li>
+            <li>Info para viajeros (hotel, traslados)</li>
+            <li>Mensajes de invitados</li>
+            <li>Galería ilimitada</li>
+            <li>Save the Date de regalo</li>
+            <li>Ajustes ilimitados · Link activo permanente</li>
+            <li>Soporte WhatsApp prioritario · Entrega 10 días hábiles</li>
+            <li>Videollamada de asesoramiento incluida</li>
+          </ul>
+          <a class="plan-card-btn" href="contacto/">EMPEZAR</a>
+          <div class="plan-card-footer">
+            <span class="plan-card-domain plan-card-domain--yes"><span data-es>✓ Dominio www incluido</span><span data-en hidden>✓ Domain included</span></span>
+            <span class="plan-card-maintenance"><span data-es>+ USD 10/mes · mantenimiento y hosting</span><span data-en hidden>+ USD 10/mo · maintenance & hosting</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add-ons / Complementos -->
+      <div class="addons-section reveal">
+        <div class="addons-header">
+          <span class="eyebrow" style="margin-bottom:6px;display:block;"><span data-es>Complementos</span><span data-en hidden>Add-ons</span></span>
+          <p class="addons-note"><span data-es>Se suman a cualquier plan. Consultanos antes de contratar.</span><span data-en hidden>Add to any plan. Ask us before purchasing.</span></p>
+        </div>
+        <div class="addons-grid">
+          <div class="addon-chip">
+            <span class="addon-name"><span data-es>Urgencia &lt;48 hs</span><span data-en hidden>Rush &lt;48 h</span></span>
+            <span class="addon-price">+USD 40</span>
+          </div>
+          <div class="addon-chip">
+            <span class="addon-name"><span data-es>Save the Date (independiente)</span><span data-en hidden>Save the Date (standalone)</span></span>
+            <span class="addon-price">+USD 30</span>
+          </div>
+          <div class="addon-chip">
+            <span class="addon-name"><span data-es>Versión "Gracias" post-evento</span><span data-en hidden>"Thank you" post-event version</span></span>
+            <span class="addon-price">+USD 25</span>
+          </div>
+          <div class="addon-chip">
+            <span class="addon-name"><span data-es>Sección adicional</span><span data-en hidden>Additional section</span></span>
+            <span class="addon-price">+USD 20</span>
+          </div>
+          <div class="addon-chip">
+            <span class="addon-name"><span data-es>Idioma adicional</span><span data-en hidden>Additional language</span></span>
+            <span class="addon-price">+USD 20</span>
+          </div>
+          <div class="addon-chip">
+            <span class="addon-name"><span data-es>Video reveal para redes</span><span data-en hidden>Social media reveal video</span></span>
+            <span class="addon-price"><span data-es>Consultar</span><span data-en hidden>Inquire</span></span>
+          </div>
+          <div class="addon-chip">
+            <span class="addon-name"><span data-es>Producción de fotos / video</span><span data-en hidden>Photo &amp; video production</span></span>
+            <span class="addon-price"><span data-es>Consultar</span><span data-en hidden>Inquire</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="planes-banner-strip planes-banner-strip--light">PAGÁ CON TU MONEDA LOCAL DESDE CUALQUIER PARTE DEL MUNDO</div>
     </div>
   </section>
 
@@ -728,7 +624,7 @@
 <footer>
   <div class="container">
     <div class="footer-brand-row">
-      <a href="../index.html"><img src="../assets/logo/logo1.svg?v=20260627g" alt="Convitia" class="footer-logo"></a>
+      <a href="#hero"><img src="assets/logo/logo1.svg?v=20260627g" alt="Convitia" class="footer-logo"></a>
       <p><span data-es>Invitaciones digitales hechas a medida, con cariño.</span><span data-en hidden>Custom digital invitations, made with care.</span></p>
     </div>
     <nav class="footer-links">
@@ -743,64 +639,6 @@
   </div>
 </footer>
 
-<script src="../main.js?v=20260629d" defer></script>
-<script>
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const get = id => (document.getElementById(id)?.value || '').trim();
-  const getRadio = name => {
-    const el = document.querySelector(`input[name="${name}"]:checked`);
-    return el ? el.value : '';
-  };
-
-  const nombre    = get('nombre');
-  const email     = get('email');
-  const telefono  = get('telefono');
-  const lugar     = get('lugar');
-  const invitados = get('invitados');
-  const mensaje   = get('mensaje');
-  // Fecha: formatear de YYYY-MM-DD a DD/MM/YYYY si hay valor
-  const fechaRaw  = get('fecha');
-  const fecha     = fechaRaw
-    ? fechaRaw.split('-').reverse().join('/')
-    : '';
-  const tipoEvento    = getRadio('tipo_evento');
-  const lugarTipo     = getRadio('lugar_tipo');
-  const diseno        = getRadio('diseno');
-  const avSonido      = getRadio('av_sonido');
-  const planElegido   = getRadio('plan_elegido');
-  const complementos  = Array.from(document.querySelectorAll('input[name="complemento"]:checked')).map(el=>el.value).join(', ');
-  const comoConociste = getRadio('como_conociste');
-
-  // Build WhatsApp pre-filled message
-  const lines = ['Hola! Les escribo desde el formulario de su sitio web. Aquí mis datos:'];
-  if (nombre)       lines.push(`👫 Nombres: ${nombre}`);
-  if (tipoEvento)   lines.push(`🎉 Evento: ${tipoEvento}`);
-  if (fecha)        lines.push(`📅 Fecha: ${fecha}`);
-  if (lugar)        lines.push(`📍 Lugar: ${lugar}`);
-  if (lugarTipo)    lines.push(`🏛 Espacio: ${lugarTipo}`);
-  if (invitados)    lines.push(`👥 Invitados: ${invitados}`);
-  if (diseno)       lines.push(`🎨 Estilo elegido: ${diseno}`);
-  if (avSonido)     lines.push(`🎵 DJ / Sonido / Iluminación: ${avSonido}`);
-  if (planElegido)  lines.push(`💎 Plan elegido: ${planElegido}`);
-  if (complementos) lines.push(`➕ Complementos: ${complementos}`);
-  if (email)        lines.push(`✉ Email: ${email}`);
-  if (telefono)     lines.push(`📞 Teléfono: ${telefono}`);
-  if (comoConociste) lines.push(`🔎 Nos encontraron por: ${comoConociste}`);
-  if (mensaje)      lines.push(`💬 Mensaje: ${mensaje}`);
-
-  const waText = encodeURIComponent(lines.join('\n'));
-  const waUrl = `https://wa.me/5492944152161?text=${waText}`;
-
-  // Show success state
-  document.getElementById('contactForm').style.display = 'none';
-  const success = document.getElementById('formSuccess');
-  success.classList.add('is-visible');
-
-  // Open WhatsApp after short delay
-  setTimeout(() => { window.open(waUrl, '_blank', 'noopener'); }, 600);
-});
-</script>
+<script src="main.js?v=20260629d" defer></script>
 </body>
 </html>

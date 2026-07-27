@@ -255,7 +255,7 @@
     /* Card-spawn trail: built unconditionally (not just on fine pointers)
        so touch devices get the same visual via finger-drag, see below. */
     var designs = [
-      { style:"real",    seal:"C", name:"Quimey &amp; Nacho",    venue:"Bariloche, Arg.",                  tag:"Caso real" },
+      { style:"real",    seal:"C", name:"Juan &amp; Naty",    venue:"Bariloche, Arg.",                  tag:"Caso real" },
       { style:"clasica", seal:"C", name:"Valentina &amp; Bruno", venue:"Est. Las Magnolias, Córdoba",       tag:"Clásica Elegante" },
       { style:"moderna", seal:"C", name:"Julia &amp; Martín",    venue:"Espacio Darwin, Bs. As.",           tag:"Moderna Minimal" },
       { style:"boho",    seal:"C", name:"Coti &amp; Iván",       venue:"Finca Las Acacias, Córdoba",        tag:"Boho Romántico" }
@@ -346,7 +346,7 @@
     if(!hero) return;
 
     var designs = [
-      { style:"real",    seal:"C", name:"Quimey &amp; Nacho",    venue:"Bariloche, Arg.",                  tag:"Caso real" },
+      { style:"real",    seal:"C", name:"Juan &amp; Naty",    venue:"Bariloche, Arg.",                  tag:"Caso real" },
       { style:"clasica", seal:"C", name:"Valentina &amp; Bruno", venue:"Est. Las Magnolias, Córdoba",       tag:"Clásica Elegante" },
       { style:"moderna", seal:"C", name:"Julia &amp; Martín",    venue:"Espacio Darwin, Bs. As.",           tag:"Moderna Minimal" },
       { style:"boho",    seal:"C", name:"Coti &amp; Iván",       venue:"Finca Las Acacias, Córdoba",        tag:"Boho Romántico" }

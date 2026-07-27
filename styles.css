@@ -715,6 +715,41 @@ section{ padding:120px 0; position:relative; }
 }
 .plan-card--full .plan-card-btn:hover{ background:rgba(255,255,255,.12); }
 
+/* Plan card logo (replaces text tag) */
+.plan-card-logo{
+  height:22px; width:auto; display:block;
+  opacity:.55;
+}
+.plan-card-logo--white{
+  filter:brightness(0) invert(1);
+  opacity:.6;
+}
+
+/* Plan card footer — domain + maintenance note */
+.plan-card-footer{
+  margin-top:16px;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+}
+.plan-card--full .plan-card-footer{ border-color:rgba(255,255,255,.1); }
+.plan-card-domain{
+  font-size:11.5px;
+  font-weight:600;
+  letter-spacing:.02em;
+}
+.plan-card-domain--no{ color:var(--ink-soft); }
+.plan-card-domain--yes{ color:var(--gold); }
+.plan-card--full .plan-card-domain--no{ color:rgba(255,255,255,.4); }
+.plan-card-maintenance{
+  font-size:11px;
+  color:var(--ink-soft);
+  letter-spacing:.01em;
+}
+.plan-card--full .plan-card-maintenance{ color:rgba(255,255,255,.38); }
+
 /* Plan card — Deluxe featured */
 .plan-card--featured{
   border:2px solid var(--terracotta);

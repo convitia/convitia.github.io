@@ -717,7 +717,7 @@ section{ padding:120px 0; position:relative; }
 
 /* Plan card logo (replaces text tag) */
 .plan-card-logo{
-  height:22px; width:auto; display:block;
+  height:34px; width:auto; display:block;
   opacity:.55;
 }
 .plan-card-logo--white{

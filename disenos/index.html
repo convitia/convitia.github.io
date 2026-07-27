@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&family=Tangerine:wght@400;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../styles.css?v=20260628n">
+<link rel="stylesheet" href="../styles.css?v=20260727a">
 </head>
 <body>
 
@@ -110,6 +110,96 @@
     </div>
   </section>
 
+  <!-- ===================== GALERÍA ===================== -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow"><span data-es>Portafolio</span><span data-en hidden>Portfolio</span></span>
+        <h2><span data-es>Cada diseño, <em>una historia única</em></span><span data-en hidden>Each design, <em>a unique story</em></span></h2>
+      </div>
+
+      <div class="gallery-tabs">
+        <button class="gallery-tab is-active" data-filter="all"><span data-es>Todos</span><span data-en hidden>All</span></button>
+        <button class="gallery-tab" data-filter="clasica">Clásica Elegante</button>
+        <button class="gallery-tab" data-filter="moderno">Moderno Minimalista</button>
+        <button class="gallery-tab" data-filter="boho">Boho Romántico</button>
+        <button class="gallery-tab" data-filter="glam">Glam / Art Decó</button>
+      </div>
+
+      <div class="gallery-grid reveal" id="galleryGrid">
+
+        <!-- Clásica Elegante -->
+        <div class="gallery-item" data-cat="clasica">
+          <img src="../assets/portadas/clasica%20elegante.jpeg" loading="lazy" alt="Clásica Elegante">
+          <div class="gallery-item-overlay"><span>Clásica Elegante</span></div>
+        </div>
+
+        <!-- Moderno Minimalista -->
+        <div class="gallery-item" data-cat="moderno">
+          <img src="../assets/portadas/moderno%20minimalista/Wedding_invitation_digital_cover_2K_202607262350.jpeg" loading="lazy" alt="Moderno Minimalista">
+          <div class="gallery-item-overlay"><span>Moderno Minimalista</span></div>
+        </div>
+        <div class="gallery-item" data-cat="moderno">
+          <img src="../assets/portadas/moderno%20minimalista/Wedding_invitation_digital_cover_2K_202607262351.jpeg" loading="lazy" alt="Moderno Minimalista">
+          <div class="gallery-item-overlay"><span>Moderno Minimalista</span></div>
+        </div>
+        <div class="gallery-item" data-cat="moderno">
+          <img src="../assets/portadas/moderno%20minimalista/Wedding_invitation_digital_cover_2K_202607262351%20%281%29.jpeg" loading="lazy" alt="Moderno Minimalista">
+          <div class="gallery-item-overlay"><span>Moderno Minimalista</span></div>
+        </div>
+        <div class="gallery-item" data-cat="moderno">
+          <img src="../assets/portadas/moderno%20minimalista/Wedding_invitation_digital_cover_2K_202607262346%20%281%29.jpeg" loading="lazy" alt="Moderno Minimalista">
+          <div class="gallery-item-overlay"><span>Moderno Minimalista</span></div>
+        </div>
+
+        <!-- Boho Romántico -->
+        <div class="gallery-item" data-cat="boho">
+          <img src="../assets/portadas/boho%20romantico/Wedding_invitation_digital_cover_2K_202607262352.jpeg" loading="lazy" alt="Boho Romántico">
+          <div class="gallery-item-overlay"><span>Boho Romántico</span></div>
+        </div>
+        <div class="gallery-item" data-cat="boho">
+          <img src="../assets/portadas/boho%20romantico/Wedding_invitation_digital_cover_2K_202607262353.jpeg" loading="lazy" alt="Boho Romántico">
+          <div class="gallery-item-overlay"><span>Boho Romántico</span></div>
+        </div>
+        <div class="gallery-item" data-cat="boho">
+          <img src="../assets/portadas/boho%20romantico/Wedding_invitation_cover_Luna_Paz_202607262323.jpeg" loading="lazy" alt="Boho Romántico">
+          <div class="gallery-item-overlay"><span>Boho Romántico</span></div>
+        </div>
+        <div class="gallery-item" data-cat="boho">
+          <img src="../assets/portadas/boho%20romantico/Wedding_invitation_Sof%C3%ADa_Mateo_2K_202607262323.jpeg" loading="lazy" alt="Boho Romántico">
+          <div class="gallery-item-overlay"><span>Boho Romántico</span></div>
+        </div>
+
+        <!-- Glam / Art Decó -->
+        <div class="gallery-item" data-cat="glam">
+          <img src="../assets/portadas/glam%20-%20art%20deco/Wedding_invitation_digital_cover_2K_202607270006.jpeg" loading="lazy" alt="Glam / Art Decó">
+          <div class="gallery-item-overlay"><span>Glam / Art Decó</span></div>
+        </div>
+        <div class="gallery-item" data-cat="glam">
+          <img src="../assets/portadas/glam%20-%20art%20deco/Wedding_invitation_digital_cover_2K_202607270006%20%281%29.jpeg" loading="lazy" alt="Glam / Art Decó">
+          <div class="gallery-item-overlay"><span>Glam / Art Decó</span></div>
+        </div>
+        <div class="gallery-item" data-cat="glam">
+          <img src="../assets/portadas/glam%20-%20art%20deco/Wedding_invitation_digital_cover_2K_202607270006%20%282%29.jpeg" loading="lazy" alt="Glam / Art Decó">
+          <div class="gallery-item-overlay"><span>Glam / Art Decó</span></div>
+        </div>
+        <div class="gallery-item" data-cat="glam">
+          <img src="../assets/portadas/glam%20-%20art%20deco/Wedding_invitation_digital_cover_2K_202607270006%20%283%29.jpeg" loading="lazy" alt="Glam / Art Decó">
+          <div class="gallery-item-overlay"><span>Glam / Art Decó</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true">
+    <button class="gallery-lb-close" id="lbClose" aria-label="Cerrar">×</button>
+    <img class="gallery-lb-img" id="lbImg" src="" alt="">
+    <button class="gallery-lb-prev" id="lbPrev" aria-label="Anterior">‹</button>
+    <button class="gallery-lb-next" id="lbNext" aria-label="Siguiente">›</button>
+  </div>
+
   <a class="all-works-teaser bleed reveal" href="../contacto/">
     <span class="teaser-text"><span data-es>¿Hablamos de tu boda?</span><span data-en hidden>Let's talk about your wedding</span></span>
   </a>
@@ -135,5 +225,78 @@
 </footer>
 
 <script src="../main.js?v=20260628g" defer></script>
+<script>
+// Gallery filter
+const galleryTabs = document.querySelectorAll('.gallery-tab');
+const galleryItems = document.querySelectorAll('.gallery-item');
+
+galleryTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    galleryTabs.forEach(t => t.classList.remove('is-active'));
+    tab.classList.add('is-active');
+    const cat = tab.dataset.filter;
+    galleryItems.forEach(item => {
+      if (cat === 'all' || item.dataset.cat === cat) {
+        item.classList.remove('is-hidden');
+      } else {
+        item.classList.add('is-hidden');
+      }
+    });
+  });
+});
+
+// Lightbox
+const lb = document.getElementById('galleryLightbox');
+const lbImg = document.getElementById('lbImg');
+const lbClose = document.getElementById('lbClose');
+const lbPrev = document.getElementById('lbPrev');
+const lbNext = document.getElementById('lbNext');
+let lbItems = [];
+let lbIdx = 0;
+
+function openLb(idx, items) {
+  lbItems = items;
+  lbIdx = idx;
+  updateLb();
+  lb.classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+function updateLb() {
+  const img = lbItems[lbIdx].querySelector('img');
+  lbImg.src = img.src;
+  lbImg.alt = img.alt;
+}
+function closeLb() {
+  lb.classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+
+galleryItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const visible = Array.from(galleryItems).filter(i => !i.classList.contains('is-hidden'));
+    const idx = visible.indexOf(item);
+    openLb(idx, visible);
+  });
+});
+
+lbClose.addEventListener('click', closeLb);
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+lbPrev.addEventListener('click', e => {
+  e.stopPropagation();
+  lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length;
+  updateLb();
+});
+lbNext.addEventListener('click', e => {
+  e.stopPropagation();
+  lbIdx = (lbIdx + 1) % lbItems.length;
+  updateLb();
+});
+document.addEventListener('keydown', e => {
+  if (!lb.classList.contains('is-open')) return;
+  if (e.key === 'Escape') closeLb();
+  if (e.key === 'ArrowLeft') { lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length; updateLb(); }
+  if (e.key === 'ArrowRight') { lbIdx = (lbIdx + 1) % lbItems.length; updateLb(); }
+});
+</script>
 </body>
 </html>

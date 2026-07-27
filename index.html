@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&family=Tangerine:wght@400;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="styles.css?v=20260727c">
+<link rel="stylesheet" href="styles.css?v=20260727d">
 </head>
 <body>
 
@@ -20,6 +20,12 @@
   <img class="splash-image" src="assets/logo/Convitia_logo_variant__Wordmark_%27Convitia%27_202606271709%20(1).jpeg" alt="Convitia">
 </div>
 <script>
+  /* Arriving with a hash already in the URL (e.g. "#work-clasica", from a
+     demo page's "Volver al Sitio web - Convitia" button) means the visitor
+     already passed the splash once — remove it synchronously, before the
+     browser paints, so it never flashes and never blocks the jump straight
+     to the target card/section. Runs inline (not in main.js) so it executes
+     before first paint, not after defer scripts. */
   if(location.hash){
     var __gate = document.getElementById("splash-gate");
     if(__gate) __gate.parentNode.removeChild(__gate);
@@ -80,6 +86,11 @@
 
 <main>
 
+  <!-- ===================== HERO — 2-column: copy left, phone showcase right =====================
+       Merged the old standalone .phone-showcase section into the hero as the
+       right-hand column (reference: text+CTA left / arch+pedestals+phones
+       right). .hero-split is scoped so the shared .hero-giant rules used by
+       contacto/index.html's plain single-column hero stay untouched. -->
   <section class="hero-giant hero-split" id="hero">
     <div class="hero-bg-blob"></div>
     <div class="hero-bg-blob two"></div>
@@ -96,6 +107,9 @@
           <span data-en hidden>With smart RSVP, interactive maps, music, and more. Unlimited revisions. In any language, anywhere in the world.</span>
         </p>
 
+        <!-- PLACEHOLDER badge (Dave's call): Convitia has no Google Business
+             listing yet, so this rating isn't real. Not a live link — swap
+             href/copy for the real review link + rating once it exists. -->
         <span class="reviews-badge reveal" data-es title="Próximamente — todavía no es un dato real">
           <svg class="reviews-badge-g" viewBox="0 0 18 18" aria-hidden="true">
             <path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84c-.21 1.13-.85 2.09-1.81 2.73v2.27h2.92c1.71-1.57 2.69-3.88 2.69-6.64z"/>
@@ -117,6 +131,11 @@
           </a>
         </div>
 
+        <!-- PLACEHOLDER stats (Dave's call, per reference image): the
+             invitation-count and country-count aren't real numbers yet —
+             swap for Convitia's actual figures once available. The
+             delivery time stays real (matches the Stats band further
+             down the page). -->
         <div class="hero-trust reveal">
           <div><b>✓</b> <span data-es>+1000 invitaciones realizadas</span><span data-en hidden>+1000 invitations made</span></div>
           <div><b>🌎</b> <span data-es>+35 países</span><span data-en hidden>+35 countries</span></div>
@@ -125,6 +144,21 @@
       </div>
 
       <div class="hero-right reveal">
+        <!-- Self-contained dark "image accordion" panel — Dave asked to
+             replace the Three.js flying-card scene above with this effect
+             instead, modeled on a 21st.dev interactive-image-accordion
+             component he shared. Scoped to just this column (left column/
+             copy stays untouched). Pure CSS (flexbox + flex-grow transition)
+             + a tiny JS toggle — see initAccGallery() in main.js, no WebGL
+             needed. Each panel's content is the real invitation copy/colors
+             (Quimey & Nacho — the real client site — plus the 3 sample
+             designs): no tool is available to export a literal screenshot,
+             so the real names/dates/colors are painted as CSS text instead
+             of a generic photo. The "Nuestros diseños" tag now sits above
+             the stage (not floating over the panels) so it reads cleanly
+             regardless of which panel's background is underneath. The
+             real video (Quimey & Nacho) that briefly lived in panel c1
+             moved to the "Qué incluye" section — see assets/video/. -->
         <span class="acc-tag">Nuestros diseños</span>
         <div class="acc-stage" aria-hidden="true">
           <div class="acc-row">
@@ -192,7 +226,7 @@
     </div>
   </div>
 
-  <!-- ===================== FEATURED WORK ===================== -->
+  <!-- ===================== FEATURED WORK — full-bleed grid ===================== -->
   <section id="trabajos" class="works-section">
     <div class="container">
       <div class="section-head reveal">
@@ -256,7 +290,7 @@
     </a>
   </section>
 
-  <!-- ===================== INCLUDED ===================== -->
+  <!-- ===================== INCLUDED — sticky label ===================== -->
   <section id="incluye">
     <div class="container sticky-grid">
       <div class="sticky-label reveal">
@@ -294,7 +328,7 @@
     </div>
   </section>
 
-  <!-- ===================== HOW IT WORKS ===================== -->
+  <!-- ===================== HOW IT WORKS — sticky label left, steps right ===================== -->
   <section id="como-funciona">
     <div class="container sticky-grid">
       <div class="sticky-label reveal">
@@ -310,7 +344,7 @@
     </div>
   </section>
 
-  <!-- ===================== DESIGNS CAROUSEL ===================== -->
+  <!-- ===================== DESIGNS — 3D page carousel, drag to spin ===================== -->
   <section id="diferencia">
     <div class="container">
       <div class="section-head center reveal">
@@ -321,12 +355,14 @@
 
       <div class="book-deck reveal">
         <div class="book-track">
+          <!-- Clásica Elegante -->
           <a class="book-card style-clasica" href="designs/clasica-elegante.html" target="_blank" rel="noopener" draggable="false">
             <div class="book-bg" style="background-image:url('assets/portadas/clasica%20elegante.jpeg')"></div>
             <div class="book-ornament">✺</div>
             <h3><span data-es>Clásica Elegante</span><span data-en hidden>Classic Elegant</span></h3>
             <span class="book-tag"><span data-es>Serif &amp; dorado</span><span data-en hidden>Serif &amp; gold</span></span>
           </a>
+          <!-- Moderno Minimalista -->
           <a class="book-card style-moderna" href="designs/moderna-minimal.html" target="_blank" rel="noopener" draggable="false">
             <div class="book-bg" style="background-image:url('assets/portadas/Moderno%20Minimalista.jpeg')"></div>
             <div class="book-ornament">／</div>
@@ -351,6 +387,7 @@
             <h3><span data-es>Moderna Minimal</span><span data-en hidden>Modern Minimal</span></h3>
             <span class="book-tag"><span data-es>Líneas limpias</span><span data-en hidden>Clean lines</span></span>
           </a>
+          <!-- Boho Romántico -->
           <a class="book-card style-boho" href="designs/boho-romantico.html" target="_blank" rel="noopener" draggable="false">
             <div class="book-bg" style="background-image:url('assets/portadas/Boho%20Rom%C3%A1ntico.jpeg')"></div>
             <div class="book-ornament">❀</div>
@@ -381,6 +418,7 @@
             <h3><span data-es>Boho Romántico</span><span data-en hidden>Boho Romantic</span></h3>
             <span class="book-tag"><span data-es>Terracota &amp; salvia</span><span data-en hidden>Terracotta &amp; sage</span></span>
           </a>
+          <!-- Glam / Art Decó -->
           <a class="book-card style-glam" href="designs/glam-art-deco.html" target="_blank" rel="noopener" draggable="false">
             <div class="book-bg" style="background-image:url('assets/portadas/Glam%20-%20Art%20Dec%C3%B3.jpeg')"></div>
             <div class="book-ornament">◈</div>
@@ -456,105 +494,112 @@
   <section id="planes">
     <div class="container">
       <div class="section-head center reveal">
-        <span class="eyebrow"><span data-es>Propuestas</span><span data-en hidden>Pricing</span></span>
+        <span class="eyebrow"><span data-es>Planes & precios</span><span data-en hidden>Plans & pricing</span></span>
         <h2><span data-es>Elegí la que más <em class="planes-accent">se adapte a vos</em></span><span data-en hidden>Find the plan that <em class="planes-accent">fits you best</em></span></h2>
-        <p class="lede" style="margin:0 auto 0"><span data-es>Cada invitación está pensada para que encuentres exactamente lo que necesitás. Todos los planes incluyen PDF de recuerdo.</span><span data-en hidden>Every invitation is designed so you find exactly what you need. All plans include a keepsake PDF.</span></p>
+        <p class="lede" style="margin:0 auto 0"><span data-es>Precios en USD. Un pago único, sin cargo por invitado, link activo para siempre.</span><span data-en hidden>Prices in USD. One-time payment, no per-guest cost, link stays live.</span></p>
       </div>
 
-      <div class="planes-banner-strip">COMPRÁ DESDE CUALQUIER PARTE DEL MUNDO</div>
+      <div class="planes-banner-strip">COMPRÁ DESDE CUALQUIER PARTE DEL MUNDO · UN LINK · INVITADOS ILIMITADOS</div>
 
-      <!-- Plan Exclusivo -->
-      <div class="plan-exclusivo reveal">
-        <div class="plan-excl-left">
-          <span class="plan-excl-badge">PLAN EXCLUSIVO</span>
-          <h3 class="plan-excl-title">Único<br>y a medida</h3>
-          <p class="plan-excl-sub">Para quienes no quieren conformarse</p>
-          <ul class="plan-excl-list">
-            <li>Diseño desde cero, pensado solo para vos</li>
-            <li>Experiencia interactiva completa</li>
-            <li>Clima esperado + Hora de llegada del evento</li>
-            <li>QR álbum de fotos + #hashtag Instagram</li>
-            <li>Sugerencia de música de bienvenida</li>
-            <li>Save the Date incluido</li>
+      <!-- Tres planes -->
+      <div class="planes-grid reveal">
+        <!-- Esencial -->
+        <div class="plan-card">
+          <div class="plan-card-tag">ESENCIAL</div>
+          <h3 class="plan-card-name">Esencial</h3>
+          <p class="plan-card-sub">EL ESTILO CONVITIA, ADAPTADO A TU HISTORIA</p>
+          <div class="plan-card-price">USD <strong>89</strong></div>
+          <p class="plan-card-ideal">Pago único · Sin cargo por invitado</p>
+          <ul class="plan-card-list">
+            <li>Estilo del catálogo adaptado a tu paleta</li>
+            <li>Portada animada con cuenta regresiva</li>
+            <li>Fecha, lugar y mapa interactivo</li>
+            <li>Dresscode</li>
+            <li>RSVP (confirmación de asistencia)</li>
+            <li>1 ronda de ajustes</li>
+            <li>Link activo 12 meses · Entrega 4 días hábiles</li>
           </ul>
-          <a class="plan-excl-link" href="contacto/">Consultá el precio →</a>
+          <a class="plan-card-btn" href="contacto/">EMPEZAR</a>
         </div>
-        <div class="plan-excl-right">
-          <span class="plan-excl-right-tag">EL SERVICIO MOON DE PUNTA A PUNTA</span>
-          <div class="plan-excl-steps">
-            <div class="plan-excl-step">
-              <span class="plan-excl-num">01</span>
-              <div><h4>Te escuchamos</h4><p>Entendemos tu historia, tu estilo y lo que soñás para ese día.</p></div>
-            </div>
-            <div class="plan-excl-step">
-              <span class="plan-excl-num">02</span>
-              <div><h4>Diseñamos juntos</h4><p>Cada decisión la tomamos con vos, sin sorpresas ni resultados genéricos.</p></div>
-            </div>
-            <div class="plan-excl-step">
-              <span class="plan-excl-num">03</span>
-              <div><h4>Superamos tus expectativas</h4><p>El resultado final es una invitación que emociona antes de que empiece la fiesta.</p></div>
-            </div>
+        <!-- Deluxe — featured -->
+        <div class="plan-card plan-card--featured">
+          <div class="plan-card-popular"><span data-es>Más elegido</span><span data-en hidden>Most popular</span></div>
+          <div class="plan-card-tag">DELUXE</div>
+          <h3 class="plan-card-name">Deluxe</h3>
+          <p class="plan-card-sub">TU HISTORIA COMPLETA, DE LA PROPUESTA AL ALTAR</p>
+          <div class="plan-card-price">USD <strong>169</strong></div>
+          <p class="plan-card-ideal">Pago único · Sin cargo por invitado</p>
+          <ul class="plan-card-list">
+            <li>Todo el plan Esencial</li>
+            <li>Nuestra historia (sección animada)</li>
+            <li>Programa del evento</li>
+            <li>Galería de fotos (hasta 15 imágenes)</li>
+            <li>Música ambiental a elección</li>
+            <li>RSVP completo (menú, alergias, pases)</li>
+            <li>Lista de regalos / info bancaria</li>
+            <li>2 rondas de ajustes</li>
+            <li>Link activo 18 meses · Entrega 6 días hábiles</li>
+          </ul>
+          <a class="plan-card-btn" href="contacto/">EMPEZAR</a>
+        </div>
+        <!-- Full — dark card -->
+        <div class="plan-card plan-card--full">
+          <div class="plan-card-tag">FULL</div>
+          <h3 class="plan-card-name">Full</h3>
+          <p class="plan-card-sub">UNA EXPERIENCIA EDITORIAL ÚNICA. SIN TEMPLATE, SIN LÍMITES</p>
+          <div class="plan-card-price">USD <strong>289</strong></div>
+          <p class="plan-card-ideal">Pago único · Sin cargo por invitado</p>
+          <ul class="plan-card-list">
+            <li>Todo el plan Deluxe</li>
+            <li>Diseño 100% exclusivo (no del catálogo)</li>
+            <li>Video o slideshow cinematográfico</li>
+            <li>Info para viajeros (hotel, traslados)</li>
+            <li>Mensajes de invitados</li>
+            <li>Galería ilimitada</li>
+            <li>Save the Date de regalo</li>
+            <li>Ajustes ilimitados · Link activo permanente</li>
+            <li>Soporte WhatsApp prioritario · Entrega 10 días hábiles</li>
+            <li>Videollamada de asesoramiento incluida</li>
+          </ul>
+          <a class="plan-card-btn" href="contacto/">EMPEZAR</a>
+        </div>
+      </div>
+
+      <!-- Add-ons / Complementos -->
+      <div class="addons-section reveal">
+        <div class="addons-header">
+          <span class="eyebrow" style="margin-bottom:6px;display:block;"><span data-es>Complementos</span><span data-en hidden>Add-ons</span></span>
+          <p class="addons-note"><span data-es>Se suman a cualquier plan. Consultanos antes de contratar.</span><span data-en hidden>Add to any plan. Ask us before purchasing.</span></p>
+        </div>
+        <div class="addons-grid">
+          <div class="addon-chip">
+            <span class="addon-name"><span data-es>Urgencia &lt;48 hs</span><span data-en hidden>Rush &lt;48 h</span></span>
+            <span class="addon-price">+USD 40</span>
           </div>
-          <div class="plan-excl-videocall">
-            <strong>VIDEOLLAMADA DE ASESORAMIENTO INCLUIDA</strong>
-            <p>Nos sentamos con vos y diseñamos juntos. Hasta 30 min de consultoría personalizada para que cada detalle sea exactamente como lo imaginamos.</p>
+          <div class="addon-chip">
+            <span class="addon-name"><span data-es>Save the Date (independiente)</span><span data-en hidden>Save the Date (standalone)</span></span>
+            <span class="addon-price">+USD 30</span>
+          </div>
+          <div class="addon-chip">
+            <span class="addon-name"><span data-es>Versión "Gracias" post-evento</span><span data-en hidden>"Thank you" post-event version</span></span>
+            <span class="addon-price">+USD 25</span>
+          </div>
+          <div class="addon-chip">
+            <span class="addon-name"><span data-es>Sección adicional</span><span data-en hidden>Additional section</span></span>
+            <span class="addon-price">+USD 20</span>
+          </div>
+          <div class="addon-chip">
+            <span class="addon-name"><span data-es>Idioma adicional</span><span data-en hidden>Additional language</span></span>
+            <span class="addon-price">+USD 20</span>
+          </div>
+          <div class="addon-chip">
+            <span class="addon-name"><span data-es>Video reveal para redes</span><span data-en hidden>Social media reveal video</span></span>
+            <span class="addon-price"><span data-es>Consultar</span><span data-en hidden>Inquire</span></span>
           </div>
         </div>
       </div>
 
       <div class="planes-banner-strip planes-banner-strip--light">PAGÁ CON TU MONEDA LOCAL DESDE CUALQUIER PARTE DEL MUNDO</div>
-
-      <!-- Tres planes -->
-      <div class="planes-grid reveal">
-        <div class="plan-card">
-          <div class="plan-card-tag">ESENCIAL</div>
-          <h3 class="plan-card-name">Esencial</h3>
-          <p class="plan-card-sub">SENCILLA, ELEGANTE Y ACCESIBLE</p>
-          <div class="plan-card-price">USD <strong>59.90</strong></div>
-          <p class="plan-card-ideal">Ideal para eventos simples</p>
-          <ul class="plan-card-list">
-            <li>Link a ceremonia y fiesta</li>
-            <li>Inicio de sobre animado</li>
-            <li>Datos para regalo</li>
-            <li>Música en la invitación</li>
-            <li>Confirmación de asistencia</li>
-            <li>PDF recuerdo de regalo</li>
-            <li>Dress code</li>
-          </ul>
-          <a class="plan-card-btn" href="https://wa.me/5492944152161?text=Hola!%20Me%20interesa%20el%20plan%20Esencial" target="_blank" rel="noopener">CONSULTAR</a>
-        </div>
-        <div class="plan-card">
-          <div class="plan-card-tag">DELUXE</div>
-          <h3 class="plan-card-name">Deluxe</h3>
-          <p class="plan-card-sub">COMPLETA Y SOFISTICADA</p>
-          <div class="plan-card-price">USD <strong>99.90</strong></div>
-          <p class="plan-card-ideal">Nuestro plan más elegido</p>
-          <ul class="plan-card-list">
-            <li>Todo lo del plan Esencial</li>
-            <li>Cuenta regresiva</li>
-            <li>Agregar la fecha</li>
-            <li>Galería de fotos</li>
-            <li>Calendario visual</li>
-            <li>Sugerencia hospedaje</li>
-            <li>Frase personalizada</li>
-          </ul>
-          <a class="plan-card-btn" href="https://wa.me/5492944152161?text=Hola!%20Me%20interesa%20el%20plan%20Deluxe" target="_blank" rel="noopener">CONSULTAR</a>
-        </div>
-        <div class="plan-card plan-card--full">
-          <div class="plan-card-tag">FULL</div>
-          <h3 class="plan-card-name">Full</h3>
-          <p class="plan-card-sub">ELEGISTE EL DISEÑO, NOSOTROS LO ARMAMOS</p>
-          <div class="plan-card-price">USD <strong>129.90</strong></div>
-          <p class="plan-card-ideal">Ideal si ya tenés un estilo en mente</p>
-          <ul class="plan-card-list">
-            <li>Diseño del catálogo</li>
-            <li>Todo el contenido Exclusivo</li>
-            <li>Ideal si ya elegiste un estilo</li>
-            <li>Proceso sin sorpresas</li>
-          </ul>
-          <a class="plan-card-btn" href="https://wa.me/5492944152161?text=Hola!%20Me%20interesa%20el%20plan%20Full" target="_blank" rel="noopener">CONSULTAR</a>
-        </div>
-      </div>
     </div>
   </section>
 

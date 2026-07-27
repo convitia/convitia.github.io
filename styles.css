@@ -229,9 +229,6 @@ body.splash-active{ overflow:hidden; }
   background:radial-gradient(circle at 60% 40%, rgba(138,150,131,.28), transparent 70%);
   animation-duration:20s; animation-delay:-4s;
 }
-/* JS (initHeroParallax) writes --px/--py per-frame on scroll/mousemove; the
-   keyframe below reads them via var() so idle float + parallax compose
-   instead of fighting over the transform property. */
 @keyframes float-blob{
   0%,100%{ transform:translate(var(--px),var(--py)) scale(1); }
   50%{ transform:translate(calc(var(--px) - 30px),calc(var(--py) + 40px)) scale(1.07); }
@@ -249,10 +246,6 @@ body.splash-active{ overflow:hidden; }
 .hero-trust div{ font-size:13px; color:var(--ink-soft); display:flex; align-items:center; gap:8px; }
 .hero-trust b{ color:var(--ink); font-family:var(--font-display); font-size:15px; }
 
-/* ---------- Hero split — 2-column homepage hero (copy left / phone showcase
-   right). Scoped under .hero-split so contacto/index.html's plain
-   single-column .hero-giant (centered, no grid) is untouched — only the
-   homepage section carries the extra .hero-split class. ---------- */
 .hero-split .container.hero-grid{
   text-align:left; display:grid; grid-template-columns:1fr .92fr; gap:48px; align-items:center;
 }
@@ -271,9 +264,6 @@ body.splash-active{ overflow:hidden; }
 }
 @keyframes type-blink{ 0%,50%{ opacity:1; } 50.01%,100%{ opacity:0; } }
 
-/* PLACEHOLDER review badge — see matching HTML comment. Convitia has no
-   Google Business listing yet, so this rating isn't real; not a live
-   link. Swap copy + add the real href once a listing exists. */
 .reviews-badge{
   display:inline-flex; align-items:center; gap:8px; margin:22px 0 4px; padding:9px 16px 9px 10px;
   background:var(--paper); border:1px solid var(--line); border-radius:999px; font-size:13px; color:var(--ink-soft);
@@ -285,15 +275,6 @@ body.splash-active{ overflow:hidden; }
 
 .hero-right{ display:flex; flex-direction:column; align-items:center; justify-content:center; }
 
-/* ---------- Interactive image accordion — hero right panel ----------
-   Replaces the earlier Three.js flying-card scene: Dave pointed at a
-   different 21st.dev reference (interactive-image-accordion) and asked
-   to match that effect instead. Self-contained dark panel living inside
-   .hero-right (the light left column with copy/CTAs is untouched).
-   Pure CSS: a flex row of panels where the .active one gets a much
-   larger flex-grow, animated by the browser's normal flex-grow
-   transition — no WebGL/canvas needed. The tiny JS in initAccGallery()
-   (main.js) just moves the .active class on hover/click/focus. */
 .acc-stage{
   position:relative; max-width:480px; width:100%; height:480px; margin:0 auto;
   border-radius:28px; overflow:hidden; padding:14px;
@@ -312,7 +293,6 @@ body.splash-active{ overflow:hidden; }
   transition:flex-grow .65s var(--ease);
 }
 .acc-panel.active{ flex-grow:5; }
-/* Accordion panels — all use real portada photos as backgrounds */
 .acc-panel.c1,.acc-panel.c2,.acc-panel.c3,.acc-panel.c4,.acc-panel.c5{ color:#fff; }
 .acc-bg{
   position:absolute; inset:0; z-index:0;
@@ -346,7 +326,7 @@ body.splash-active{ overflow:hidden; }
 .acc-info-name{ font-family:var(--font-display); font-style:italic; font-size:25px; white-space:nowrap; }
 .acc-info-date{ font-family:var(--font-body); font-size:12px; opacity:.8; white-space:nowrap; }
 
-/* ---------- Invite-card mockup (reused inside the works grid) ---------- */
+/* ---------- Invite-card mockup ---------- */
 .invite-card{
   position:relative; background:var(--paper); border-radius:22px; padding:42px 34px;
   box-shadow:0 40px 80px -30px rgba(43,36,32,.28); border:1px solid var(--line);
@@ -381,12 +361,11 @@ section{ padding:120px 0; position:relative; }
 .section-head .lede{ margin-top:16px; }
 .section-head.center{ margin-left:auto; margin-right:auto; text-align:center; }
 
-/* ---------- Page intro (lightweight heading for /disenos/, /contacto/) ---------- */
 .page-intro{ padding:170px 0 50px; }
 .page-intro h1{ font-size:clamp(38px,5.2vw,62px); margin:16px 0 14px; }
 .page-intro .lede{ margin-top:4px; }
 
-/* ---------- Works grid — full-bleed (Miles "Works" page pattern) ---------- */
+/* ---------- Works grid ---------- */
 .works-section{ padding-bottom:0; }
 .works-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--ink); perspective:1200px; }
 .work-tile{
@@ -423,13 +402,7 @@ section{ padding:120px 0; position:relative; }
 .thumb-3{ background:linear-gradient(155deg,var(--sage),#5f6b58); }
 .thumb-4{ background:linear-gradient(155deg,#1a1a1a,#000); }
 
-/* ---------- Style stack cards (/disenos/ — 4 style picker) ----------
-   A row of cards, each with a small cover photo peeking out of the
-   bottom-right corner. Hover or click lifts the card and straightens
-   the photo; the "view sample" link fades in. Only one card is
-   .active at a time (see initStyleStack in main.js, mirrors the
-   acc-panel/initAccGallery pattern) — the first card ships with
-   .active hardcoded in the markup so it looks right before JS runs. */
+/* ---------- Style stack cards ---------- */
 .stack-cards{ display:flex; justify-content:center; align-items:flex-end; gap:26px; flex-wrap:wrap; padding:20px 0 30px; }
 .stack-card{
   position:relative; z-index:1; width:248px; height:354px; flex-shrink:0;
@@ -441,15 +414,10 @@ section{ padding:120px 0; position:relative; }
 .stack-card-title{ font-size:25px; line-height:1.15; max-width:140px; }
 .stack-card-sub{ font-size:13px; color:var(--ink-soft); margin-top:8px; max-width:140px; }
 
-/* ---------- Tipografías representativas por estilo — sección "Elegí tu estilo".
-   Cada temática usa una familia distinta para que el título transmita el estilo
-   antes de leer el texto. Se aplica tanto al h3 de las stack-cards (/disenos/)
-   como al .work-name de la grilla de la home — mismas 4 clases, mismo criterio. ---------- */
 .style-font-clasica{ font-family:var(--font-display); font-style:italic; font-weight:600; }
 .style-font-moderno{ font-family:'Space Grotesk', var(--font-body); font-style:normal; font-weight:600; letter-spacing:.01em; }
 .style-font-boho{ font-family:'Tangerine', cursive; font-style:normal; font-weight:700; font-size:2.3em; line-height:.9; }
 .style-font-glam{ font-family:'Playfair Display', var(--font-display); font-style:normal; font-weight:700; letter-spacing:.04em; text-transform:uppercase; font-size:.85em; }
-/* "Ver demo" — botón siempre visible del lado derecho de cada stack-card (ver [[convitia_design_themes]]). */
 .stack-card-link{
   position:absolute; top:28px; right:24px; z-index:4; font-family:var(--font-body); font-size:11px; font-weight:600;
   letter-spacing:.03em; color:var(--terracotta-d); text-decoration:none; white-space:nowrap;
@@ -473,7 +441,6 @@ section{ padding:120px 0; position:relative; }
 .type-break em{ color:var(--gold); font-style:italic; }
 .type-break-cta{ margin-top:38px; white-space:normal; }
 
-/* ---------- "Ver demo" — botón visible en cada work-tile de la home (#trabajos) ---------- */
 .work-demo-btn{
   position:absolute; top:20px; right:20px; z-index:3; font-family:var(--font-body); font-size:11.5px; font-weight:600;
   letter-spacing:.03em; color:#fff; text-decoration:none; white-space:nowrap;
@@ -484,7 +451,7 @@ section{ padding:120px 0; position:relative; }
 .work-tile:hover .work-demo-btn{ background:rgba(20,16,14,.6); border-color:#fff; transform:translateY(-2px); }
 .work-demo-btn.disabled{ opacity:.75; }
 
-/* ---------- Sticky-label sections (Miles Capabilities/Process pattern) ---------- */
+/* ---------- Sticky-label sections ---------- */
 .sticky-grid{ display:grid; grid-template-columns:.85fr 1.15fr; gap:60px; align-items:start; }
 .sticky-grid.mirror{ grid-template-columns:1.15fr .85fr; }
 .sticky-label{ position:sticky; top:140px; }
@@ -515,23 +482,12 @@ section{ padding:120px 0; position:relative; }
 .stats-grid b{ display:block; font-family:var(--font-display); font-size:40px; color:var(--gold); }
 .stats-grid span{ font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:rgba(251,246,238,.65); margin-top:8px; display:block; }
 
-/* ---------- Designs — flat drag-fan, drag to spin ----------
-   The 4 cards sit flat in a fan — all 4 always visible, tilted via
-   rotateY, never hidden behind one another (matches the reference's
-   look). Each card's transform/opacity/z-index is a pure function of
-   its own slot value (see initDesignsBook in main.js) — no shared
-   parent transform, no per-card transform set here in CSS. With only
-   4 real cards and no spares waiting off-screen, a flat layout that
-   spins forever has exactly one seam per card per revolution; it's
-   made invisible by fading opacity to exactly 0 right at the seam, so
-   the one frame a card's position jumps, it can't be seen. */
+/* ---------- Book deck ---------- */
 .book-deck{
   position:relative; width:100%; max-width:920px; height:320px; margin:54px auto 0;
   touch-action:none; user-select:none; perspective:1200px;
 }
-.book-track{
-  position:absolute; inset:0;
-}
+.book-track{ position:absolute; inset:0; }
 .book-card{
   position:absolute; top:50%; left:50%; width:230px; height:260px; margin:0;
   display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
@@ -555,7 +511,7 @@ section{ padding:120px 0; position:relative; }
 .book-tag{ font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.7); font-weight:600; margin-top:5px; position:relative; z-index:2; }
 .book-hint{ text-align:center; margin-top:18px; font-size:12.5px; letter-spacing:.04em; color:var(--ink-soft); }
 
-/* ---------- CTA band — full-bleed ---------- */
+/* ---------- CTA band ---------- */
 .cta-band{
   background:linear-gradient(155deg,var(--terracotta),var(--terracotta-d)); color:#fff; padding:90px 0;
   text-align:center; overflow:hidden;
@@ -590,7 +546,6 @@ section{ padding:120px 0; position:relative; }
   background:var(--cream-soft); color:var(--ink-soft);
 }
 
-/* Plan Exclusivo */
 .plan-exclusivo{
   display:grid; grid-template-columns:1fr 1fr; gap:48px;
   background:var(--ink); border-radius:14px; padding:48px 52px;
@@ -651,7 +606,6 @@ section{ padding:120px 0; position:relative; }
 }
 .plan-excl-videocall p{ font-size:13px; color:rgba(255,255,255,.65); margin:0; line-height:1.5; }
 
-/* 3 Plan cards */
 .planes-grid{
   display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:32px;
 }
@@ -659,9 +613,7 @@ section{ padding:120px 0; position:relative; }
   background:#fff; border:1px solid var(--line); border-radius:12px;
   padding:32px 28px; display:flex; flex-direction:column;
 }
-.plan-card--full{
-  background:var(--ink); border-color:var(--ink);
-}
+.plan-card--full{ background:var(--ink); border-color:var(--ink); }
 .plan-card-tag{
   font-size:10px; letter-spacing:.2em; text-transform:uppercase;
   font-weight:700; color:var(--terracotta); margin-bottom:14px;
@@ -715,25 +667,66 @@ section{ padding:120px 0; position:relative; }
 }
 .plan-card--full .plan-card-btn:hover{ background:rgba(255,255,255,.12); }
 
-/* ---------- Footer — minimal, stacked links (Miles pattern) ---------- */
-footer{ background:var(--ink); color:rgba(251,246,238,.78); padding:90px 0 30px; text-align:center; }
-.footer-brand-row{ display:flex; flex-direction:column; align-items:center; gap:14px; margin-bottom:50px; }
-.footer-brand-row .brand-word{ color:var(--cream); font-size:26px; }
-.footer-brand-row p{ font-size:14px; color:rgba(251,246,238,.55); }
-.footer-links{ display:flex; flex-direction:column; align-items:center; gap:18px; margin-bottom:50px; }
-.footer-links a, .footer-links span{ font-family:var(--font-display); font-size:22px; color:rgba(251,246,238,.85); }
+/* ---------- Footer — delicado y compacto ---------- */
+footer{
+  background:var(--ink);
+  color:rgba(251,246,238,.7);
+  padding:48px 0 22px;
+  text-align:center;
+}
+.footer-brand-row{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  margin-bottom:24px;
+}
+.footer-logo{
+  height:32px;
+  width:auto;
+  filter:brightness(0) invert(1);
+  opacity:.8;
+}
+.footer-brand-row .brand-word{ color:var(--cream); font-size:20px; }
+.footer-brand-row p{
+  font-size:12.5px;
+  color:rgba(251,246,238,.38);
+  letter-spacing:.03em;
+}
+.footer-links{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:4px 22px;
+  margin-bottom:24px;
+}
+.footer-links a, .footer-links span{
+  font-family:var(--font-body);
+  font-size:12.5px;
+  color:rgba(251,246,238,.52);
+  letter-spacing:.04em;
+  transition:color .2s;
+}
 .footer-links a:hover{ color:var(--gold); }
-.footer-bottom{ display:flex; justify-content:center; gap:18px; padding-top:26px; border-top:1px solid rgba(251,246,238,.12); font-size:12.5px; color:rgba(251,246,238,.5); flex-wrap:wrap; }
-.footer-bottom a{ color:rgba(251,246,238,.7); }
+.footer-bottom{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  padding-top:16px;
+  border-top:1px solid rgba(251,246,238,.08);
+  font-size:11px;
+  color:rgba(251,246,238,.32);
+  flex-wrap:wrap;
+}
+.footer-bottom a{ color:rgba(251,246,238,.45); }
 
 /* ---------- Reveal animations ---------- */
 .reveal{ opacity:0; transform:translateY(24px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
 .reveal.is-visible{ opacity:1; transform:none; }
-.reveal[data-split]{ opacity:1; transform:none; } /* defensive: never hide content if JS fails */
+.reveal[data-split]{ opacity:1; transform:none; }
 
-/* ---------- Cascade stagger for repeated items (sticky rows, value cards,
-   stat columns, FAQ entries) — each item's reveal fires a touch later than
-   the one before it, instead of a flat all-at-once fade. ---------- */
 .sticky-row:nth-child(1){ transition-delay:.02s; } .sticky-row:nth-child(2){ transition-delay:.08s; }
 .sticky-row:nth-child(3){ transition-delay:.14s; } .sticky-row:nth-child(4){ transition-delay:.20s; }
 .sticky-row:nth-child(5){ transition-delay:.26s; } .sticky-row:nth-child(6){ transition-delay:.32s; }
@@ -745,10 +738,6 @@ footer{ background:var(--ink); color:rgba(251,246,238,.78); padding:90px 0 30px;
 .stats-grid div:nth-child(1){ transition-delay:.02s; } .stats-grid div:nth-child(2){ transition-delay:.1s; }
 .stats-grid div:nth-child(3){ transition-delay:.18s; } .stats-grid div:nth-child(4){ transition-delay:.26s; }
 
-/* ---------- i18n ----------
-   Bilingual content uses the native [hidden] attribute (toggled via main.js).
-   [data-en] elements ship with `hidden` in the markup so Spanish shows by
-   default even if JS fails to load (rule: hardcode content, JS only enriches). */
 [data-es], [data-en]{ }
 
 /* ---------- Responsive ---------- */
@@ -776,7 +765,7 @@ footer{ background:var(--ink); color:rgba(251,246,238,.78); padding:90px 0 30px;
   .cta-band{ padding:60px 28px; }
   section{ padding:80px 0; }
   .hero-giant{ padding:150px 0 60px; }
-  .footer-links a, .footer-links span{ font-size:18px; }
+  .footer-links a, .footer-links span{ font-size:12px; }
   .plan-exclusivo{ grid-template-columns:1fr; gap:32px; padding:32px 24px; }
   .planes-grid{ grid-template-columns:1fr; }
   .acc-stage{ height:340px; max-width:300px; padding:10px; }

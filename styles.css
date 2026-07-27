@@ -950,3 +950,18 @@ footer{ background:var(--ink); color:rgba(251,246,238,.78); padding:90px 0 30px;
   .gallery-tabs{ gap:6px; }
   .gallery-tab{ font-size:0.7rem; padding:6px 14px; }
 }
+
+/* ===========================
+   VIDEO EN PÁGINA DE DISEÑOS
+=========================== */
+.disenos-video-section{
+  padding:80px 0 60px;
+  background:var(--cream);
+}
+.disenos-video-section .section-head{
+  margin-bottom:44px;
+}
+.disenos-video-section .incluye-video-wrap{
+  width:min(380px,88vw);
+  margin:0 auto;
+}

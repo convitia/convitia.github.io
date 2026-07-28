@@ -12,7 +12,70 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Jost:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&family=Tangerine:wght@400;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="styles.css?v=20260727f">
+<link rel="stylesheet" href="styles.css?v=20260727g">
+<style>
+/* ==============================
+CONTACTO — FORMULARIO (sección inline home)
+============================== */
+.contact-wrap{padding:80px 0 120px;}
+.contact-grid{display:grid;grid-template-columns:1fr 1.6fr;gap:80px;align-items:start;}
+.contact-info{position:sticky;top:120px;}
+.contact-info-body{font-size:15px;color:var(--ink-soft);line-height:1.75;margin-bottom:36px;max-width:320px;}
+.contact-info-links{display:flex;flex-direction:column;gap:14px;}
+.contact-info-link{display:flex;align-items:center;gap:12px;font-size:13.5px;color:var(--ink-soft);text-decoration:none;transition:color .2s;}
+.contact-info-link:hover{color:var(--terracotta);}
+.contact-info-link-icon{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;background:var(--paper);transition:border-color .2s,background .2s;}
+.contact-info-link:hover .contact-info-link-icon{border-color:var(--terracotta);background:rgba(181,101,74,.06);}
+.contact-ornament{font-size:80px;color:var(--gold-soft);font-family:var(--font-display);line-height:1;margin-top:40px;user-select:none;}
+.contact-form-card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:52px 48px;box-shadow:0 24px 60px -28px rgba(43,36,32,.14);}
+.form-title{font-family:var(--font-display);font-size:26px;font-weight:500;margin-bottom:6px;}
+.form-subtitle{font-size:13.5px;color:var(--ink-soft);margin-bottom:42px;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 32px;}
+.form-group{position:relative;margin-bottom:34px;}
+.form-group.full{grid-column:1/-1;}
+.form-group input,.form-group textarea,.form-group select{width:100%;background:transparent;border:none;border-bottom:1.5px solid var(--line);padding:22px 0 10px;font-family:var(--font-body);font-size:15px;color:var(--ink);outline:none;transition:border-color .3s;border-radius:0;appearance:none;-webkit-appearance:none;}
+.form-group textarea{resize:none;height:90px;line-height:1.6;}
+.form-group input:focus,.form-group textarea:focus{border-bottom-color:var(--terracotta);}
+.form-group input::placeholder,.form-group textarea::placeholder{opacity:0;}
+.form-label{position:absolute;top:20px;left:0;font-family:var(--font-body);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;pointer-events:none;transition:top .25s,font-size .25s,color .25s,letter-spacing .25s;}
+.form-group input:focus~.form-label,.form-group input:not(:placeholder-shown)~.form-label,.form-group textarea:focus~.form-label,.form-group textarea:not(:placeholder-shown)~.form-label{top:2px;font-size:10px;letter-spacing:.12em;color:var(--terracotta-d);}
+.form-group input:focus~.form-label{color:var(--terracotta);}
+.form-group input[type="date"]{color-scheme:light;cursor:pointer;}
+.form-group input[type="date"]~.form-label{top:2px;font-size:10px;letter-spacing:.12em;color:var(--terracotta-d);}
+.form-group::after{content:"";position:absolute;bottom:0;left:0;width:0;height:1.5px;background:var(--terracotta);transition:width .35s var(--ease);}
+.form-group:focus-within::after{width:100%;}
+.form-chips-label{font-family:var(--font-body);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--terracotta-d);font-weight:500;display:block;margin-bottom:14px;padding-top:4px;}
+.form-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.chip-option{position:relative;}
+.chip-option input[type="radio"],.chip-option input[type="checkbox"]{position:absolute;opacity:0;width:0;height:0;}
+.chip-option label{display:inline-block;padding:8px 18px;border:1.5px solid var(--line);border-radius:999px;font-family:var(--font-body);font-size:13px;color:var(--ink-soft);cursor:pointer;transition:border-color .2s,background .2s,color .2s,transform .2s;user-select:none;white-space:nowrap;}
+.chip-option label:hover{border-color:var(--terracotta);color:var(--terracotta);}
+.chip-option input[type="radio"]:checked+label,.chip-option input[type="checkbox"]:checked+label{background:var(--terracotta);border-color:var(--terracotta);color:#fff;transform:translateY(-1px);}
+.form-divider{grid-column:1/-1;height:1px;background:var(--line);margin:6px 0 28px;}
+.form-submit-row{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:8px;flex-wrap:wrap;}
+.form-submit-note{font-size:12.5px;color:var(--ink-soft);line-height:1.5;max-width:260px;}
+.form-submit-note strong{color:var(--ink);}
+.btn-submit{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:999px;font-size:15px;font-weight:500;font-family:var(--font-body);background:var(--terracotta);color:#fff;border:none;cursor:pointer;box-shadow:0 10px 24px -8px rgba(181,101,74,.5);transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .25s;white-space:nowrap;}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 16px 30px -8px rgba(181,101,74,.6);background:var(--terracotta-d);}
+.btn-submit svg{width:17px;height:17px;}
+.form-success{display:none;text-align:center;padding:60px 20px;}
+.form-success.is-visible{display:flex;flex-direction:column;align-items:center;gap:16px;}
+.form-success-icon{font-size:52px;line-height:1;}
+.form-success h3{font-family:var(--font-display);font-size:28px;font-weight:500;}
+.form-success p{font-size:14.5px;color:var(--ink-soft);max-width:320px;line-height:1.65;}
+@media(max-width:900px){
+  .contact-grid{grid-template-columns:1fr;gap:48px;}
+  .contact-info{position:static;}
+  .contact-ornament{display:none;}
+}
+@media(max-width:680px){
+  .contact-form-card{padding:36px 24px;border-radius:16px;}
+  .form-grid{grid-template-columns:1fr;}
+  .form-group.full{grid-column:1;}
+  .form-submit-row{flex-direction:column;align-items:flex-start;}
+  .btn-submit{width:100%;justify-content:center;}
+}
+</style>
 </head>
 <body>
 
@@ -344,111 +407,6 @@
     </div>
   </section>
 
-  <!-- ===================== DESIGNS — 3D page carousel, drag to spin ===================== -->
-  <section id="diferencia">
-    <div class="container">
-      <div class="section-head center reveal">
-        <span class="eyebrow"><span data-es>Nuestra diferencia</span><span data-en hidden>Our difference</span></span>
-        <h2><span data-es>Lo que nos hace diferentes</span><span data-en hidden>What makes us different</span></h2>
-        <p class="lede"><span data-es>No somos una plantilla más. Mirá nuestros estilos — cada invitación se construye con vos, no para vos.</span><span data-en hidden>We're not just another template. Take a look at our styles — every invitation is built with you, not just for you.</span></p>
-      </div>
-
-      <div class="book-deck reveal">
-        <div class="book-track">
-          <!-- Clásica Elegante -->
-          <a class="book-card style-clasica" href="designs/clasica-elegante.html" target="_blank" rel="noopener" draggable="false">
-            <div class="book-bg" style="background-image:url('assets/portadas/clasica%20elegante.jpeg')"></div>
-            <div class="book-ornament">✺</div>
-            <h3><span data-es>Clásica Elegante</span><span data-en hidden>Classic Elegant</span></h3>
-            <span class="book-tag"><span data-es>Serif &amp; dorado</span><span data-en hidden>Serif &amp; gold</span></span>
-          </a>
-          <!-- Moderno Minimalista -->
-          <a class="book-card style-moderna" href="designs/moderna-minimal.html" target="_blank" rel="noopener" draggable="false">
-            <div class="book-bg" style="background-image:url('assets/portadas/Moderno%20Minimalista.jpeg')"></div>
-            <div class="book-ornament">／</div>
-            <h3><span data-es>Moderna Minimal</span><span data-en hidden>Modern Minimal</span></h3>
-            <span class="book-tag"><span data-es>Líneas limpias</span><span data-en hidden>Clean lines</span></span>
-          </a>
-          <a class="book-card style-moderna" href="designs/moderna-minimal.html" target="_blank" rel="noopener" draggable="false">
-            <div class="book-bg" style="background-image:url('assets/portadas/moderno%20minimalista/Wedding_invitation_digital_cover_2K_202607262350.jpeg')"></div>
-            <div class="book-ornament">／</div>
-            <h3><span data-es>Moderna Minimal</span><span data-en hidden>Modern Minimal</span></h3>
-            <span class="book-tag"><span data-es>Líneas limpias</span><span data-en hidden>Clean lines</span></span>
-          </a>
-          <a class="book-card style-moderna" href="designs/moderna-minimal.html" target="_blank" rel="noopener" draggable="false">
-            <div class="book-bg" style="background-image:url('assets/portadas/moderno%20minimalista/Wedding_invitation_digital_cover_2K_202607262351.jpeg')"></div>
-            <div class="book-ornament">／</div>
-            <h3><span data-es>Moderna Minimal</span><span data-en hidden>Modern Minimal</span></h3>
-            <span class="book-tag"><span data-es>Líneas limpias</span><span data-en hidden>Clean lines</span></span>
-          </a>
-          <a class="book-card style-moderna" href="designs/moderna-minimal.html" target="_blank" rel="noopener" draggable="false">
-            <div class="book-bg" style="background-image:url('assets/portadas/moderno%20minimalista/Wedding_invitation_digital_cover_2K_202607262351%20%281%29.jpeg')"></div>
-            <div class="book-ornament">／</div>
-            <h3><span data-es>Moderna Minimal</span><span data-en hidden>Modern Minimal</span></h3>
-            <span class="book-tag"><span data-es>Líneas limpias</span><span data-en hidden>Clean lines</span></span>
-          </a>
-          <!-- Boho Romántico -->
-          <a class="book-card style-boho" href="designs/boho-romantico.html" target="_blank" rel="noopener" draggable="false">
-            <div class="book-bg" style="background-image:url('assets/portadas/Boho%20Rom%C3%A1ntico.jpeg')"></div>
-            <div class="book-ornament">❀</div>
-            <h3><span data-es>Boho Romántico</span><span data-en hidden>Boho Romantic</span></h3>
-            <span class="book-tag"><span data-es>Terracota &amp; salvia</span><span data-en hidden>Terracotta &amp; sage</span></span>
-          </a>
-          <a class="book-card style-boho" href="designs/boho-romantico.html" target="_blank" rel="noopener" draggable="false">
-            <div class="book-bg" style="background-image:url('assets/portadas/boho%20romantico/Wedding_invitation_digital_cover_2K_202607262352.jpeg')"></div>
-            <div class="book-ornament">❀</div>
-            <h3><span data-es>Boho Romántico</span><span data-en hidden>Boho Romantic</span></h3>
-            <span class="book-tag"><span data-es>Terracota &amp; salvia</span><span data-en hidden>Terracotta &amp; sage</span></span>
-          </a>
-          <a class="book-card style-boho" href="designs/boho-romantico.html" target="_blank" rel="noopener" draggable="false">
-            <div class="book-bg" style="background-image:url('assets/portadas/boho%20romantico/Wedding_invitation_digital_cover_2K_202607262353.jpeg')"></div>
-            <div class="book-ornament">❀</div>
-            <h3><span data-es>Boho Romántico</span><span data-en hidden>Boho Romantic</span></h3>
-            <span class="book-tag"><span data-es>Terracota &amp; salvia</span><span data-en hidden>Terracotta &amp; sage</span></span>
-          </a>
-          <a class="book-card style-boho" href="designs/boho-romantico.html" target="_blank" rel="noopener" draggable="false">
-            <div class="book-bg" style="background-image:url('assets/portadas/boho%20romantico/Wedding_invitation_cover_Luna_Paz_202607262323.jpeg')"></div>
-            <div class="book-ornament">❀</div>
-            <h3><span data-es>Boho Romántico</span><span data-en hidden>Boho Romantic</span></h3>
-            <span class="book-tag"><span data-es>Terracota &amp; salvia</span><span data-en hidden>Terracotta &amp; sage</span></span>
-          </a>
-          <a class="book-card style-boho" href="designs/boho-romantico.html" target="_blank" rel="noopener" draggable="false">
-            <div class="book-bg" style="background-image:url('assets/portadas/boho%20romantico/Wedding_invitation_Sof%C3%ADa_Mateo_2K_202607262323.jpeg')"></div>
-            <div class="book-ornament">❀</div>
-            <h3><span data-es>Boho Romántico</span><span data-en hidden>Boho Romantic</span></h3>
-            <span class="book-tag"><span data-es>Terracota &amp; salvia</span><span data-en hidden>Terracotta &amp; sage</span></span>
-          </a>
-          <!-- Glam / Art Decó -->
-          <a class="book-card style-glam" href="designs/glam-art-deco.html" target="_blank" rel="noopener" draggable="false">
-            <div class="book-bg" style="background-image:url('assets/portadas/Glam%20-%20Art%20Dec%C3%B3.jpeg')"></div>
-            <div class="book-ornament">◈</div>
-            <h3><span data-es>Glam · Art Decó</span><span data-en hidden>Glam · Art Deco</span></h3>
-            <span class="book-tag"><span data-es>Negro &amp; dorado</span><span data-en hidden>Black &amp; gold</span></span>
-          </a>
-          <a class="book-card style-glam" href="designs/glam-art-deco.html" target="_blank" rel="noopener" draggable="false">
-            <div class="book-bg" style="background-image:url('assets/portadas/glam%20-%20art%20deco/Wedding_invitation_digital_cover_2K_202607270006.jpeg')"></div>
-            <div class="book-ornament">◈</div>
-            <h3><span data-es>Glam · Art Decó</span><span data-en hidden>Glam · Art Deco</span></h3>
-            <span class="book-tag"><span data-es>Negro &amp; dorado</span><span data-en hidden>Black &amp; gold</span></span>
-          </a>
-          <a class="book-card style-glam" href="designs/glam-art-deco.html" target="_blank" rel="noopener" draggable="false">
-            <div class="book-bg" style="background-image:url('assets/portadas/glam%20-%20art%20deco/Wedding_invitation_digital_cover_2K_202607270006%20%281%29.jpeg')"></div>
-            <div class="book-ornament">◈</div>
-            <h3><span data-es>Glam · Art Decó</span><span data-en hidden>Glam · Art Deco</span></h3>
-            <span class="book-tag"><span data-es>Negro &amp; dorado</span><span data-en hidden>Black &amp; gold</span></span>
-          </a>
-          <a class="book-card style-glam" href="designs/glam-art-deco.html" target="_blank" rel="noopener" draggable="false">
-            <div class="book-bg" style="background-image:url('assets/portadas/glam%20-%20art%20deco/Wedding_invitation_digital_cover_2K_202607270006%20%282%29.jpeg')"></div>
-            <div class="book-ornament">◈</div>
-            <h3><span data-es>Glam · Art Decó</span><span data-en hidden>Glam · Art Deco</span></h3>
-            <span class="book-tag"><span data-es>Negro &amp; dorado</span><span data-en hidden>Black &amp; gold</span></span>
-          </a>
-        </div>
-      </div>
-      <p class="book-hint reveal"><span data-es>Arrastrá para girar y ver los estilos ↔</span><span data-en hidden>Drag to spin through the styles ↔</span></p>
-    </div>
-  </section>
-
   <!-- ===================== FAQ ===================== -->
   <section id="preguntas">
     <div class="container">
@@ -619,6 +577,164 @@
     </div>
   </section>
 
+  <!-- ===================== CONTACTO — inline ===================== -->
+  <section id="contacto-home" class="contact-wrap">
+    <div class="container">
+      <div class="section-head center reveal" style="margin-bottom:56px;">
+        <span class="eyebrow"><span data-es>Contacto</span><span data-en hidden>Contact</span></span>
+        <h2><span data-es>Hablemos de <em style="font-style:italic;color:var(--terracotta-d);">tu boda</em></span><span data-en hidden>Let's talk about <em style="font-style:italic;color:var(--terracotta-d);">your wedding</em></span></h2>
+      </div>
+      <div class="contact-grid">
+
+        <!-- Info lateral -->
+        <aside class="contact-info reveal">
+          <p class="contact-info-body">
+            <span data-es>Completá el formulario y te respondemos el mismo día. Queremos saber todo sobre vos y tu evento para crear algo que los represente.</span>
+            <span data-en hidden>Fill out the form and we'll reply the same day. We want to know everything about you and your event to create something that truly represents you.</span>
+          </p>
+          <div class="contact-info-links">
+            <a class="contact-info-link" href="https://wa.me/5492944152161" target="_blank" rel="noopener">
+              <span class="contact-info-link-icon">💬</span>
+              <span><strong>WhatsApp</strong><br>+54 9 2944 152161</span>
+            </a>
+            <a class="contact-info-link" href="mailto:hola@convitia.com">
+              <span class="contact-info-link-icon">✉</span>
+              <span><strong>Email</strong><br>hola@convitia.com</span>
+            </a>
+            <div class="contact-info-link">
+              <span class="contact-info-link-icon">⏱</span>
+              <span>
+                <strong><span data-es>Respuesta el mismo día</span><span data-en hidden>Same-day response</span></strong><br>
+                <span data-es style="font-size:12px;">Lunes a viernes · 9–20 h</span>
+                <span data-en hidden style="font-size:12px;">Monday–Friday · 9 am–8 pm</span>
+              </span>
+            </div>
+          </div>
+          <div class="contact-ornament" aria-hidden="true">✺</div>
+        </aside>
+
+        <!-- Formulario -->
+        <div class="contact-form-card reveal" style="transition-delay:.12s">
+          <p class="form-title"><span data-es>Contanos sobre tu boda</span><span data-en hidden>Tell us about your wedding</span></p>
+          <p class="form-subtitle"><span data-es>Todos los campos son opcionales.</span><span data-en hidden>All fields are optional.</span></p>
+
+          <form id="contactFormMain" novalidate>
+            <div class="form-grid">
+
+              <div class="form-group">
+                <input type="text" id="m_nombre" name="nombre" placeholder=" " autocomplete="name">
+                <label class="form-label" for="m_nombre"><span data-es>Nombre de ustedes</span><span data-en hidden>Your names</span></label>
+              </div>
+
+              <div class="form-group">
+                <input type="date" id="m_fecha" name="fecha">
+                <label class="form-label" for="m_fecha"><span data-es>Fecha del evento</span><span data-en hidden>Event date</span></label>
+              </div>
+
+              <div class="form-group">
+                <input type="email" id="m_email" name="email" placeholder=" " autocomplete="email">
+                <label class="form-label" for="m_email">Email</label>
+              </div>
+
+              <div class="form-group">
+                <input type="tel" id="m_telefono" name="telefono" placeholder=" " autocomplete="tel">
+                <label class="form-label" for="m_telefono"><span data-es>Teléfono / WhatsApp</span><span data-en hidden>Phone / WhatsApp</span></label>
+              </div>
+
+              <div class="form-group">
+                <input type="text" id="m_lugar" name="lugar" placeholder=" ">
+                <label class="form-label" for="m_lugar"><span data-es>¿Dónde es el evento?</span><span data-en hidden>Where is the event?</span></label>
+              </div>
+
+              <div class="form-group">
+                <input type="text" id="m_invitados" name="invitados" placeholder=" " inputmode="numeric">
+                <label class="form-label" for="m_invitados"><span data-es>Cantidad de invitados</span><span data-en hidden>Number of guests</span></label>
+              </div>
+
+              <div class="form-divider"></div>
+
+              <div class="form-group full" style="margin-bottom:24px;">
+                <span class="form-chips-label"><span data-es>¿Cuál es tu evento?</span><span data-en hidden>What's your event?</span></span>
+                <div class="form-chips" role="radiogroup" aria-label="Tipo de evento">
+                  <div class="chip-option"><input type="radio" name="m_tipo_evento" id="m_ev_boda" value="Boda"><label for="m_ev_boda"><span data-es>💍 Boda</span><span data-en hidden>💍 Wedding</span></label></div>
+                  <div class="chip-option"><input type="radio" name="m_tipo_evento" id="m_ev_15" value="15 años"><label for="m_ev_15"><span data-es>🎀 15 años</span><span data-en hidden>🎀 Quinceañera</span></label></div>
+                  <div class="chip-option"><input type="radio" name="m_tipo_evento" id="m_ev_aniversario" value="Aniversario"><label for="m_ev_aniversario"><span data-es>💛 Aniversario</span><span data-en hidden>💛 Anniversary</span></label></div>
+                  <div class="chip-option"><input type="radio" name="m_tipo_evento" id="m_ev_otro" value="Otro evento"><label for="m_ev_otro"><span data-es>✨ Otro</span><span data-en hidden>✨ Other</span></label></div>
+                </div>
+              </div>
+
+              <div class="form-group full" style="margin-bottom:24px;">
+                <span class="form-chips-label"><span data-es>¿Qué diseño o temática les gustó?</span><span data-en hidden>Which design or theme caught your eye?</span></span>
+                <div class="form-chips" role="radiogroup" aria-label="Diseño">
+                  <div class="chip-option"><input type="radio" name="m_diseno" id="m_ds_clasica" value="Clásica Elegante"><label for="m_ds_clasica"><span data-es>🤍 Clásica Elegante</span><span data-en hidden>🤍 Classic Elegant</span></label></div>
+                  <div class="chip-option"><input type="radio" name="m_diseno" id="m_ds_moderno" value="Moderno Minimalista"><label for="m_ds_moderno"><span data-es>◻ Moderno Minimalista</span><span data-en hidden>◻ Modern Minimalist</span></label></div>
+                  <div class="chip-option"><input type="radio" name="m_diseno" id="m_ds_boho" value="Boho Romántico"><label for="m_ds_boho"><span data-es>🌸 Boho Romántico</span><span data-en hidden>🌸 Boho Romantic</span></label></div>
+                  <div class="chip-option"><input type="radio" name="m_diseno" id="m_ds_glam" value="Glam / Art Decó"><label for="m_ds_glam"><span data-es>✦ Glam / Art Decó</span><span data-en hidden>✦ Glam / Art Deco</span></label></div>
+                  <div class="chip-option"><input type="radio" name="m_diseno" id="m_ds_propio" value="Personalizado"><label for="m_ds_propio"><span data-es>🎨 Personalizado</span><span data-en hidden>🎨 Custom</span></label></div>
+                </div>
+              </div>
+
+              <div class="form-group full" style="margin-bottom:24px;">
+                <span class="form-chips-label"><span data-es>¿Qué plan te gustó más?</span><span data-en hidden>Which plan caught your eye?</span></span>
+                <div class="form-chips" role="radiogroup" aria-label="Plan preferido">
+                  <div class="chip-option"><input type="radio" name="m_plan_elegido" id="m_pl_esencial" value="Esencial"><label for="m_pl_esencial">Esencial</label></div>
+                  <div class="chip-option"><input type="radio" name="m_plan_elegido" id="m_pl_deluxe" value="Deluxe"><label for="m_pl_deluxe">Deluxe</label></div>
+                  <div class="chip-option"><input type="radio" name="m_plan_elegido" id="m_pl_full" value="Full Personalizado"><label for="m_pl_full">Full Personalizado</label></div>
+                  <div class="chip-option"><input type="radio" name="m_plan_elegido" id="m_pl_nodecidido" value="Todavía no lo sé"><label for="m_pl_nodecidido"><span data-es>Todavía no lo sé</span><span data-en hidden>Not sure yet</span></label></div>
+                </div>
+              </div>
+
+              <div class="form-group full" style="margin-bottom:24px;">
+                <span class="form-chips-label"><span data-es>¿Qué complemento desea sumar?</span><span data-en hidden>Which add-on would you like?</span></span>
+                <div class="form-chips" role="group" aria-label="Complementos">
+                  <div class="chip-option"><input type="checkbox" name="m_complemento" id="m_comp_urgencia" value="Urgencia <48 hs"><label for="m_comp_urgencia"><span data-es>⚡ Urgencia &lt;48 hs</span><span data-en hidden>⚡ Rush &lt;48 h</span></label></div>
+                  <div class="chip-option"><input type="checkbox" name="m_complemento" id="m_comp_std" value="Save the Date"><label for="m_comp_std">📅 Save the Date</label></div>
+                  <div class="chip-option"><input type="checkbox" name="m_complemento" id="m_comp_gracias" value="Versión Gracias post-evento"><label for="m_comp_gracias"><span data-es>💌 Versión Gracias post-evento</span><span data-en hidden>💌 Thank you post-event</span></label></div>
+                  <div class="chip-option"><input type="checkbox" name="m_complemento" id="m_comp_seccion" value="Sección adicional"><label for="m_comp_seccion"><span data-es>➕ Sección adicional</span><span data-en hidden>➕ Additional section</span></label></div>
+                  <div class="chip-option"><input type="checkbox" name="m_complemento" id="m_comp_idioma" value="Idioma adicional"><label for="m_comp_idioma"><span data-es>🌐 Idioma adicional</span><span data-en hidden>🌐 Additional language</span></label></div>
+                  <div class="chip-option"><input type="checkbox" name="m_complemento" id="m_comp_video" value="Video reveal para redes"><label for="m_comp_video"><span data-es>🎬 Video reveal para redes</span><span data-en hidden>🎬 Social media reveal video</span></label></div>
+                  <div class="chip-option"><input type="checkbox" name="m_complemento" id="m_comp_fotovideo" value="Producción de fotos / video"><label for="m_comp_fotovideo"><span data-es>📸 Producción de fotos / video</span><span data-en hidden>📸 Photo &amp; video production</span></label></div>
+                </div>
+              </div>
+
+              <div class="form-group full">
+                <textarea id="m_mensaje" name="mensaje" placeholder=" "></textarea>
+                <label class="form-label" for="m_mensaje"><span data-es>¿Algo más que quieras contarnos?</span><span data-en hidden>Anything else you'd like to share?</span></label>
+              </div>
+
+              <div class="form-submit-row">
+                <p class="form-submit-note">
+                  <span data-es><strong>Te respondemos el mismo día</strong> por email o WhatsApp.</span>
+                  <span data-en hidden><strong>We reply the same day</strong> by email or WhatsApp.</span>
+                </p>
+                <button type="submit" class="btn-submit">
+                  <span data-es>Enviar mensaje</span><span data-en hidden>Send message</span>
+                  <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M3 10h14M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+          </form>
+
+          <div class="form-success" id="formSuccessMain">
+            <div class="form-success-icon">💌</div>
+            <h3><span data-es>¡Mensaje enviado!</span><span data-en hidden>Message sent!</span></h3>
+            <p>
+              <span data-es>Gracias por escribirnos — te contactamos en el día.</span>
+              <span data-en hidden>Thanks for reaching out — we'll be in touch today.</span>
+            </p>
+            <a class="btn btn-primary" style="margin-top:16px;" href="https://wa.me/5492944152161" target="_blank" rel="noopener">
+              <span data-es>También podés escribirnos por WhatsApp</span><span data-en hidden>You can also message us on WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer>
@@ -640,5 +756,40 @@
 </footer>
 
 <script src="main.js?v=20260629d" defer></script>
+<script>
+document.getElementById('contactFormMain').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const get = id => (document.getElementById(id)?.value || '').trim();
+  const getRadio = name => { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? el.value : ''; };
+  const nombre = get('m_nombre');
+  const email = get('m_email');
+  const telefono = get('m_telefono');
+  const lugar = get('m_lugar');
+  const invitados = get('m_invitados');
+  const mensaje = get('m_mensaje');
+  const fechaRaw = get('m_fecha');
+  const fecha = fechaRaw ? fechaRaw.split('-').reverse().join('/') : '';
+  const tipoEvento = getRadio('m_tipo_evento');
+  const diseno = getRadio('m_diseno');
+  const planElegido = getRadio('m_plan_elegido');
+  const complementos = Array.from(document.querySelectorAll('input[name="m_complemento"]:checked')).map(el=>el.value).join(', ');
+  const lines = ['Hola! Les escribo desde el formulario de su sitio web. Aquí mis datos:'];
+  if (nombre) lines.push(`👫 Nombres: ${nombre}`);
+  if (tipoEvento) lines.push(`🎉 Evento: ${tipoEvento}`);
+  if (fecha) lines.push(`📅 Fecha: ${fecha}`);
+  if (lugar) lines.push(`📍 Lugar: ${lugar}`);
+  if (invitados) lines.push(`👥 Invitados: ${invitados}`);
+  if (diseno) lines.push(`🎨 Estilo elegido: ${diseno}`);
+  if (planElegido) lines.push(`💎 Plan elegido: ${planElegido}`);
+  if (complementos) lines.push(`➕ Complementos: ${complementos}`);
+  if (email) lines.push(`✉ Email: ${email}`);
+  if (telefono) lines.push(`📞 Teléfono: ${telefono}`);
+  if (mensaje) lines.push(`💬 Mensaje: ${mensaje}`);
+  const waUrl = `https://wa.me/5492944152161?text=${encodeURIComponent(lines.join('\n'))}`;
+  document.getElementById('contactFormMain').style.display = 'none';
+  document.getElementById('formSuccessMain').classList.add('is-visible');
+  setTimeout(() => { window.open(waUrl, '_blank', 'noopener'); }, 600);
+});
+</script>
 </body>
 </html>
